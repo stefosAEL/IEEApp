@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  IEEApps
 //
 //  Created by Stefanos Kafkalias on 27/03/2022.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-
+class MainViewController : UIViewController
+{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
 }
-
