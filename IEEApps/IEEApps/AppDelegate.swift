@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  IEE Apps
+//  IEEApps
 //
-//  Created by Stefanos Kafkalias on 26/03/2022.
+//  Created by Stefanos Kafkalias on 27/03/2022.
 //
 
 import UIKit
