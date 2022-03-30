@@ -11,7 +11,9 @@ import UIKit
 class MainViewController : UIViewController
 {
     
+    @IBOutlet weak var LogInBtn: UIButton!
     override func viewDidLoad() {
+        LogInBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 15)
         super.viewDidLoad()
     }
 
