@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		985407028610455E5A2ED87B /* Pods_IEEApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */; };
 		B130F61627F0B8D4003D1B98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F61527F0B8D4003D1B98 /* AppDelegate.swift */; };
 		B130F61827F0B8D4003D1B98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F61727F0B8D4003D1B98 /* SceneDelegate.swift */; };
 		B130F61D27F0B8D5003D1B98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B130F61B27F0B8D4003D1B98 /* Main.storyboard */; };
 		B130F61F27F0B8D6003D1B98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B130F61E27F0B8D6003D1B98 /* Assets.xcassets */; };
 		B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F62C27F0BB96003D1B98 /* MainViewController.swift */; };
 		B130F62F27F0BDEE003D1B98 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F62E27F0BDEE003D1B98 /* MainModel.swift */; };
+		B1FC31FF27F73735001DFCCE /* PostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC31FE27F73735001DFCCE /* PostApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		295220E9518996FFD2FFC4FA /* Pods-IEEApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.debug.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.debug.xcconfig"; sourceTree = "<group>"; };
+		3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IEEApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8903D0DFE36AF6B65ABEFA76 /* Pods-IEEApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.release.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.release.xcconfig"; sourceTree = "<group>"; };
 		B130F61227F0B8D4003D1B98 /* IEEApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IEEApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B130F61527F0B8D4003D1B98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B130F61727F0B8D4003D1B98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		B130F62327F0B8D6003D1B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B130F62C27F0BB96003D1B98 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B130F62E27F0BDEE003D1B98 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		B1FC31FE27F73735001DFCCE /* PostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				985407028610455E5A2ED87B /* Pods_IEEApps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		648C48274E65DD0174B2D19A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				295220E9518996FFD2FFC4FA /* Pods-IEEApps.debug.xcconfig */,
+				8903D0DFE36AF6B65ABEFA76 /* Pods-IEEApps.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B130F60927F0B8D4003D1B98 = {
 			isa = PBXGroup;
 			children = (
 				B130F61427F0B8D4003D1B98 /* IEEApps */,
 				B130F61327F0B8D4003D1B98 /* Products */,
+				648C48274E65DD0174B2D19A /* Pods */,
+				CDCD65033B70054EFED67775 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,8 +106,17 @@
 			isa = PBXGroup;
 			children = (
 				B130F62E27F0BDEE003D1B98 /* MainModel.swift */,
+				B1FC31FE27F73735001DFCCE /* PostApi.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CDCD65033B70054EFED67775 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B130F62627F0B8D6003D1B98 /* Build configuration list for PBXNativeTarget "IEEApps" */;
 			buildPhases = (
+				1A4ABBB821C6ED9BAFC84C7D /* [CP] Check Pods Manifest.lock */,
 				B130F60E27F0B8D4003D1B98 /* Sources */,
 				B130F60F27F0B8D4003D1B98 /* Frameworks */,
 				B130F61027F0B8D4003D1B98 /* Resources */,
+				600CFAA0B5C71A5E1AA670C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,11 +186,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A4ABBB821C6ED9BAFC84C7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IEEApps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		600CFAA0B5C71A5E1AA670C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IEEApps/Pods-IEEApps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IEEApps/Pods-IEEApps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IEEApps/Pods-IEEApps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B130F60E27F0B8D4003D1B98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1FC31FF27F73735001DFCCE /* PostApi.swift in Sources */,
 				B130F61627F0B8D4003D1B98 /* AppDelegate.swift in Sources */,
 				B130F61827F0B8D4003D1B98 /* SceneDelegate.swift in Sources */,
 				B130F62F27F0BDEE003D1B98 /* MainModel.swift in Sources */,
@@ -298,6 +371,7 @@
 		};
 		B130F62727F0B8D6003D1B98 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 295220E9518996FFD2FFC4FA /* Pods-IEEApps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -326,6 +400,7 @@
 		};
 		B130F62827F0B8D6003D1B98 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8903D0DFE36AF6B65ABEFA76 /* Pods-IEEApps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
