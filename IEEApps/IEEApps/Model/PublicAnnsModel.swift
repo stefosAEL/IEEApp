@@ -6,12 +6,12 @@
 //
 
 import Foundation
-struct PublicAnns: Decodable {
-  let all: [PublicAnn]
+struct PublicAnns: Codable {
+  let data: [PublicAnn]
   
   
-  enum CodingKeys: String, CodingKey {
-    case all = "data"
-    
-  }
+//  enum CodingKeys: String, CodingKey {
+//    case all = "data"
+//
+//  }
 }

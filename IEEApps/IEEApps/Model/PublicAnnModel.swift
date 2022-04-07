@@ -6,22 +6,17 @@
 //
 import Alamofire
 
-struct PublicAnn:Codable {
-    //let teacher: String
+struct PublicAnn: Codable {
+    let author: Teacher
     let title: String
     let body: String
-    //  let event: String
-    let dateTime: String
-    let tags: Tags
+    let created_at: String
+    let tags: [Tags]
 }
 
-enum CodingKeys: String, CodingKey {
-   //case teacher="author.name"
-   case title
-   case body
-   //case event="tags"
-   case dateTime = "created_at"
- }
+struct Teacher: Codable {
+    let name: String
+}
 
 struct Tags:Codable {
     let title: String

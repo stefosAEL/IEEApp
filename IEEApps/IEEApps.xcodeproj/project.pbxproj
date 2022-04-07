@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		985407028610455E5A2ED87B /* Pods_IEEApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */; };
+		B10AAA5627FC586F004EEE34 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5527FC586F004EEE34 /* APIRouter.swift */; };
+		B10AAA5827FC599A004EEE34 /* ClientRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5727FC599A004EEE34 /* ClientRequests.swift */; };
+		B10AAA5A27FC59B6004EEE34 /* DataRequest+Processing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5927FC59B6004EEE34 /* DataRequest+Processing.swift */; };
+		B10AAA5D27FC5AEC004EEE34 /* DataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5C27FC5AEC004EEE34 /* DataContext.swift */; };
+		B10AAA5F27FC5B48004EEE34 /* DataContext+ClientRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5E27FC5B48004EEE34 /* DataContext+ClientRequests.swift */; };
 		B130F61627F0B8D4003D1B98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F61527F0B8D4003D1B98 /* AppDelegate.swift */; };
 		B130F61827F0B8D4003D1B98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F61727F0B8D4003D1B98 /* SceneDelegate.swift */; };
 		B130F61D27F0B8D5003D1B98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B130F61B27F0B8D4003D1B98 /* Main.storyboard */; };
@@ -15,7 +20,6 @@
 		B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F62C27F0BB96003D1B98 /* MainViewController.swift */; };
 		B130F62F27F0BDEE003D1B98 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F62E27F0BDEE003D1B98 /* MainModel.swift */; };
 		B1FC320127F75FE9001DFCCE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC320027F75FE9001DFCCE /* SettingsViewController.swift */; };
-		B1FFD1EE27F881DD000B4A69 /* GETPublicAnnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFD1ED27F881DD000B4A69 /* GETPublicAnnModel.swift */; };
 		B1FFD1F127F89D3E000B4A69 /* PublicAnnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFD1F027F89D3E000B4A69 /* PublicAnnModel.swift */; };
 		B1FFD1F327F8A1C7000B4A69 /* PublicAnnsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFD1F227F8A1C7000B4A69 /* PublicAnnsModel.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +28,11 @@
 		295220E9518996FFD2FFC4FA /* Pods-IEEApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.debug.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.debug.xcconfig"; sourceTree = "<group>"; };
 		3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IEEApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8903D0DFE36AF6B65ABEFA76 /* Pods-IEEApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.release.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.release.xcconfig"; sourceTree = "<group>"; };
+		B10AAA5527FC586F004EEE34 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		B10AAA5727FC599A004EEE34 /* ClientRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRequests.swift; sourceTree = "<group>"; };
+		B10AAA5927FC59B6004EEE34 /* DataRequest+Processing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataRequest+Processing.swift"; sourceTree = "<group>"; };
+		B10AAA5C27FC5AEC004EEE34 /* DataContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContext.swift; sourceTree = "<group>"; };
+		B10AAA5E27FC5B48004EEE34 /* DataContext+ClientRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataContext+ClientRequests.swift"; sourceTree = "<group>"; };
 		B130F61227F0B8D4003D1B98 /* IEEApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IEEApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B130F61527F0B8D4003D1B98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B130F61727F0B8D4003D1B98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +42,6 @@
 		B130F62C27F0BB96003D1B98 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B130F62E27F0BDEE003D1B98 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		B1FC320027F75FE9001DFCCE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		B1FFD1ED27F881DD000B4A69 /* GETPublicAnnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GETPublicAnnModel.swift; sourceTree = "<group>"; };
 		B1FFD1F027F89D3E000B4A69 /* PublicAnnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicAnnModel.swift; sourceTree = "<group>"; };
 		B1FFD1F227F8A1C7000B4A69 /* PublicAnnsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicAnnsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +67,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B10AAA5B27FC5ADA004EEE34 /* DataContext */ = {
+			isa = PBXGroup;
+			children = (
+				B10AAA5C27FC5AEC004EEE34 /* DataContext.swift */,
+				B10AAA5E27FC5B48004EEE34 /* DataContext+ClientRequests.swift */,
+			);
+			path = DataContext;
+			sourceTree = "<group>";
+		};
+		B10AAA6027FC5BDA004EEE34 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B1FC320027F75FE9001DFCCE /* SettingsViewController.swift */,
+				B130F62C27F0BB96003D1B98 /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		B130F60927F0B8D4003D1B98 = {
 			isa = PBXGroup;
 			children = (
@@ -80,10 +106,11 @@
 		B130F61427F0B8D4003D1B98 /* IEEApps */ = {
 			isa = PBXGroup;
 			children = (
+				B10AAA6027FC5BDA004EEE34 /* ViewControllers */,
+				B10AAA5B27FC5ADA004EEE34 /* DataContext */,
 				B1FFD1EF27F894B8000B4A69 /* Api_router */,
 				B130F62B27F0BA9F003D1B98 /* Model */,
-				B130F62927F0BA6B003D1B98 /* VIiew */,
-				B130F62A27F0BA7A003D1B98 /* ViewModel */,
+				B130F62927F0BA6B003D1B98 /* Storyboards */,
 				B130F61527F0B8D4003D1B98 /* AppDelegate.swift */,
 				B130F61727F0B8D4003D1B98 /* SceneDelegate.swift */,
 				B130F61E27F0B8D6003D1B98 /* Assets.xcassets */,
@@ -92,21 +119,12 @@
 			path = IEEApps;
 			sourceTree = "<group>";
 		};
-		B130F62927F0BA6B003D1B98 /* VIiew */ = {
+		B130F62927F0BA6B003D1B98 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				B130F61B27F0B8D4003D1B98 /* Main.storyboard */,
 			);
-			path = VIiew;
-			sourceTree = "<group>";
-		};
-		B130F62A27F0BA7A003D1B98 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				B130F62C27F0BB96003D1B98 /* MainViewController.swift */,
-				B1FC320027F75FE9001DFCCE /* SettingsViewController.swift */,
-			);
-			path = ViewModel;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		B130F62B27F0BA9F003D1B98 /* Model */ = {
@@ -122,7 +140,9 @@
 		B1FFD1EF27F894B8000B4A69 /* Api_router */ = {
 			isa = PBXGroup;
 			children = (
-				B1FFD1ED27F881DD000B4A69 /* GETPublicAnnModel.swift */,
+				B10AAA5527FC586F004EEE34 /* APIRouter.swift */,
+				B10AAA5727FC599A004EEE34 /* ClientRequests.swift */,
+				B10AAA5927FC59B6004EEE34 /* DataRequest+Processing.swift */,
 			);
 			path = Api_router;
 			sourceTree = "<group>";
@@ -250,13 +270,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1FFD1F327F8A1C7000B4A69 /* PublicAnnsModel.swift in Sources */,
+				B10AAA5627FC586F004EEE34 /* APIRouter.swift in Sources */,
 				B130F61627F0B8D4003D1B98 /* AppDelegate.swift in Sources */,
 				B130F61827F0B8D4003D1B98 /* SceneDelegate.swift in Sources */,
+				B10AAA5827FC599A004EEE34 /* ClientRequests.swift in Sources */,
 				B130F62F27F0BDEE003D1B98 /* MainModel.swift in Sources */,
+				B10AAA5F27FC5B48004EEE34 /* DataContext+ClientRequests.swift in Sources */,
 				B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */,
+				B10AAA5D27FC5AEC004EEE34 /* DataContext.swift in Sources */,
 				B1FFD1F127F89D3E000B4A69 /* PublicAnnModel.swift in Sources */,
 				B1FC320127F75FE9001DFCCE /* SettingsViewController.swift in Sources */,
-				B1FFD1EE27F881DD000B4A69 /* GETPublicAnnModel.swift in Sources */,
+				B10AAA5A27FC59B6004EEE34 /* DataRequest+Processing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
