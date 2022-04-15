@@ -27,14 +27,18 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="ΣΥΝΔΕΣΗ"/>
+                                <connections>
+                                    <action selector="LoggIn:" destination="5uC-Tf-ySF" eventType="touchUpInside" id="MnO-5E-Ez7"/>
+                                </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="MwP-4M-gr8">
-                                <rect key="frame" x="5" y="90" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="90" width="419" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IVQ-Gu-lLC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IVQ-Gu-lLC">
                                 <rect key="frame" x="0.0" y="151" width="414" height="701"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PublicAnnsCell" id="Uzc-Iz-rVY" customClass="PublicAnnTableViewCell" customModule="IEEApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="115.5"/>
@@ -49,15 +53,15 @@
                                                         <constraint firstAttribute="height" constant="20" id="aS7-4v-nSt"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgv-nB-GIA">
-                                                    <rect key="frame" x="10" y="30" width="23.5" height="20"/>
+                                                    <rect key="frame" x="10" y="30" width="399" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="fNO-KP-Khd"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -108,6 +112,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="DlN-rT-LXF" secondAttribute="trailing" constant="5" id="G7S-1J-YeG"/>
                                                 <constraint firstItem="Lgv-nB-GIA" firstAttribute="top" secondItem="YV4-Sp-FYe" secondAttribute="bottom" constant="5" id="Nlc-Cb-qsK"/>
                                                 <constraint firstItem="YV4-Sp-FYe" firstAttribute="leading" secondItem="5Kb-ho-RFO" secondAttribute="leading" constant="10" id="Qhk-4m-QqZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Lgv-nB-GIA" secondAttribute="trailing" constant="5" id="VgH-gx-UF7"/>
                                                 <constraint firstItem="DlN-rT-LXF" firstAttribute="top" secondItem="Lgv-nB-GIA" secondAttribute="bottom" constant="5" id="jTK-8E-v5W"/>
                                                 <constraint firstAttribute="trailing" secondItem="vhi-Pe-NtR" secondAttribute="trailing" constant="5" id="jx8-WO-Iah"/>
                                                 <constraint firstItem="Lgv-nB-GIA" firstAttribute="leading" secondItem="5Kb-ho-RFO" secondAttribute="leading" constant="10" id="m4g-9n-kvp"/>
@@ -141,7 +146,7 @@
                             <constraint firstItem="gWm-TX-C60" firstAttribute="bottom" secondItem="IVQ-Gu-lLC" secondAttribute="bottom" constant="10" id="lKw-RO-ooM"/>
                             <constraint firstItem="IVQ-Gu-lLC" firstAttribute="leading" secondItem="gWm-TX-C60" secondAttribute="leading" id="nIg-8X-6ok"/>
                             <constraint firstItem="gWm-TX-C60" firstAttribute="trailing" secondItem="IVQ-Gu-lLC" secondAttribute="trailing" id="qeu-ck-8oE"/>
-                            <constraint firstItem="MwP-4M-gr8" firstAttribute="leading" secondItem="gWm-TX-C60" secondAttribute="leading" constant="5" id="xbF-nd-xoC"/>
+                            <constraint firstItem="MwP-4M-gr8" firstAttribute="leading" secondItem="gWm-TX-C60" secondAttribute="leading" id="xbF-nd-xoC"/>
                         </constraints>
                     </view>
                     <connections>

@@ -8,18 +8,22 @@
 import Foundation
 import UIKit
 import Alamofire
+import WebKit
 
-class MainViewController : UIViewController,UITableViewDelegate, UITableViewDataSource{
+class MainViewController : UIViewController,UITableViewDelegate, UITableViewDataSource,WKUIDelegate  {
+    var webView: WKWebView!
     let reuseIdentifier = "PublicAnnsCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var LogInBtn: UIButton!
     var publicAnns: [PublicAnn]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         LogInBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 15)
         tableView.dataSource = self
         tableView.delegate = self
 //        self.collectionView.register(PublicAnnsCollectionViewCell.self, forCellWithReuseIdentifier: "PublicAnnsCell")
+           //callWebView(LogInBtn)
         DataContext.instance.getAnnouncemnets(completion: { [weak self] publicAnns in
             if let publicAnns = publicAnns {
                 self?.publicAnns = publicAnns.data
@@ -43,11 +47,13 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
             print("You tapped cell number \(indexPath.section).")
         }
     
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create a new cell if needed or reuse an old one
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier , for: indexPath as IndexPath) as! PublicAnnTableViewCell
         let announcement = publicAnns?[indexPath.row]
-        //cell.teacherLabel = announcement?.author.name  // set the text from the data model
+        //cell.teacherLabel = announcement?.author.name
+        cell.teacherLabel.text=announcement?.author.name
         cell.bodyLabel.text = announcement?.body
         cell.dateTimeLabel.text = announcement?.created_at
         cell.eventLabel.text = announcement?.tags[0].title
@@ -60,5 +66,25 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
         cell.clipsToBounds = true
         return cell
     }
-
+    @IBAction func LoggIn(_ sender: Any) {
+        showWebView("https://login.iee.ihu.gr/")
+    }
+    //    override func loadView() {
+//       let webConfiguration = WKWebViewConfiguration()
+//       webView = WKWebView(frame: .zero, configuration: webConfiguration)
+//       webView.uiDelegate = self
+//       view = webView
+//    }
+//    @IBAction func callWebView(_ sender: UIButton) {
+//        let myURL = URL(string:"https://login.iee.ihu.gr/")
+//        let myRequest = URLRequest(url: myURL!)
+//        webView.load(myRequest)
+//    }
+    public func showWebView(_ url: String) {
+           let vc : LogginWebViewVC = UIStoryboard(name: "LogginWebViewVC", bundle: nil).instantiateViewController(withIdentifier: "LogginWebViewVC") as! LogginWebViewVC
+           vc.url = url
+           vc.modalPresentationStyle = .overFullScreen
+           vc.modalTransitionStyle = .flipHorizontal
+           self.present(vc, animated: true, completion: nil)
+    }
 }
