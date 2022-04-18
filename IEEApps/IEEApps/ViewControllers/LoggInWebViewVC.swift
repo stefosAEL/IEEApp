@@ -9,8 +9,7 @@ import Foundation
 import WebKit
 
 class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINavigationBarDelegate {
-    var webView: WKWebView!
-    
+    var webView: WKWebView!    
     let navBar: UINavigationBar = {
         let bar = UINavigationBar()
         bar.backgroundColor = UIColor.white

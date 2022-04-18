@@ -9,21 +9,37 @@ import Foundation
 import UIKit
 import Alamofire
 import WebKit
+import SafariServices
+
 
 class MainViewController : UIViewController,UITableViewDelegate, UITableViewDataSource,WKUIDelegate  {
-    var webView: WKWebView!
     let reuseIdentifier = "PublicAnnsCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var LogInBtn: UIButton!
     var publicAnns: [PublicAnn]?
+    let oAuthService: OAuthService
+    private let makeHomeViewController: () -> UIViewController
+    
+    init(oAuthService: OAuthService ,makeHomeViewController: @escaping () -> UIViewController) {
+        self.oAuthService = oAuthService
+        self.makeHomeViewController = makeHomeViewController
+      
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        oAuthService.onAuthenticationResult = { [weak self] in self?.onAuthenticationResult(result: $0) }
         
         LogInBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 15)
         tableView.dataSource = self
         tableView.delegate = self
-//        self.collectionView.register(PublicAnnsCollectionViewCell.self, forCellWithReuseIdentifier: "PublicAnnsCell")
-           //callWebView(LogInBtn)
+
         DataContext.instance.getAnnouncemnets(completion: { [weak self] publicAnns in
             if let publicAnns = publicAnns {
                 self?.publicAnns = publicAnns.data
@@ -67,24 +83,30 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
         return cell
     }
     @IBAction func LoggIn(_ sender: Any) {
-        showWebView("https://login.iee.ihu.gr/")
+        guard let url = oAuthService.getAuthPageUrl(state: "state") else { return }
+        
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.modalPresentationStyle = .fullScreen
+        present(safariVC, animated: true, completion: nil)
+        
     }
-    //    override func loadView() {
-//       let webConfiguration = WKWebViewConfiguration()
-//       webView = WKWebView(frame: .zero, configuration: webConfiguration)
-//       webView.uiDelegate = self
-//       view = webView
-//    }
-//    @IBAction func callWebView(_ sender: UIButton) {
-//        let myURL = URL(string:"https://login.iee.ihu.gr/")
-//        let myRequest = URLRequest(url: myURL!)
-//        webView.load(myRequest)
-//    }
-    public func showWebView(_ url: String) {
-           let vc : LogginWebViewVC = UIStoryboard(name: "LogginWebViewVC", bundle: nil).instantiateViewController(withIdentifier: "LogginWebViewVC") as! LogginWebViewVC
-           vc.url = url
-           vc.modalPresentationStyle = .overFullScreen
-           vc.modalTransitionStyle = .flipHorizontal
-           self.present(vc, animated: true, completion: nil)
+    func onAuthenticationResult(result: Result<TokenBag, Error>) {
+        DispatchQueue.main.async {
+            self.presentedViewController?.dismiss(animated: true) {
+                switch result {
+                case .success:
+                    self.navigationController?.pushViewController(self.makeHomeViewController(), animated: true)
+
+                case .failure:
+                    let alert = UIAlertController(title: "Something went wrong :(",
+                                                  message: "Authentication error",
+                                                  preferredStyle: .alert)
+
+                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
     }
+
 }

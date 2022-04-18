@@ -9,9 +9,4 @@ import Foundation
 struct PublicAnns: Codable {
   let data: [PublicAnn]
   
-  
-//  enum CodingKeys: String, CodingKey {
-//    case all = "data"
-//
-//  }
 }
