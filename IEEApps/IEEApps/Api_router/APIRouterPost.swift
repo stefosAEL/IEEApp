@@ -1,22 +1,19 @@
 //
-//  APIRouter.swift
+//  APIRouterPost.swift
 //  IEEApps
 //
-//  Created by Stefanos Kafkalias on 05/04/2022.
+//  Created by Stefanos Kafkalias on 27/04/2022.
 //
 
 import Foundation
 import Alamofire
+enum APIRouterPost: URLRequestConvertible {
 
-enum APIRouter: URLRequestConvertible {
-
-    case getPublicAnnouncments
+    
     case getToken(grant_type: String,client_id: String,client_secret: String,code: String)
     
     var baseURL: String? {
         switch self {
-            case .getPublicAnnouncments:
-                return "https://aboard.iee.ihu.gr//api"
             case .getToken:
                 return "https://login.iee.ihu.gr"
             
@@ -25,8 +22,6 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-            case .getPublicAnnouncments:
-                return .get
             case .getToken:
                 return .post
         }
@@ -34,8 +29,6 @@ enum APIRouter: URLRequestConvertible {
     
     var path: String {
         switch self {
-            case .getPublicAnnouncments:
-                return "/announcements"
             case .getToken:
                 return "/token"
         }
@@ -45,27 +38,18 @@ enum APIRouter: URLRequestConvertible {
         switch method {
         case .post:
             switch self {
-                case .getPublicAnnouncments:
-                    return JSONEncoding.default
                 case .getToken:
-                    return URLEncoding.default
-                
-            }
+                    return URLEncoding.httpBody            }
         default:
             return URLEncoding.queryString
         }
     }
     
     var headers: [String : String] {
-        var headers = ["Content-Type" : "application/json"]
-        switch self {
-            case .getToken:
-               
-            headers["Content-Type"] = "application/x-www-form-urlencode"
-            headers["Cookie"] = "connect.sid=s%3Axd_v-ikpMWEEHhw-QMJDT8B0hbFgl9Yl.9zywdEQreC5wdmSPD%2BA4Gq9Jc3xkris4a%2FrAnsUdnQE"
-        case .getPublicAnnouncments:
-            break
-        }
+        var headers = ["Content-Type" : "application/x-www-form-urlencoded"]
+         headers["connect.sid=s%3AfcIarDZSXo7WuQc_sclVGOlJ-VZxIo6V.XprPWEQKtmQHXcxGh3zNkyWPIE7t9D%2F6xvLgF99wPiI"] = "Cookie"
+      
+        
     
         return headers
     }
@@ -77,13 +61,11 @@ enum APIRouter: URLRequestConvertible {
         
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
-        print(headers)
         var parameters: Parameters?
         
         switch self {
-        case.getPublicAnnouncments:
-            parameters = [:]
         case.getToken(let client_id, let client_secret, let code , let grant_type ):
+            parameters = [:]
             parameters = [
                 "client_id" : client_id,
                 "client_secret" : client_secret,
@@ -98,5 +80,6 @@ enum APIRouter: URLRequestConvertible {
     
     
 }
+
 
 

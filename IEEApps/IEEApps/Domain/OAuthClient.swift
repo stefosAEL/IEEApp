@@ -9,7 +9,6 @@ import Foundation
 protocol OAuthClient {
     func getAuthPageUrl(state: String) -> URL?
     func exchangeCodeForToken(code: String,
-                              state: String,
                               completion: @escaping (Result<TokenBag, Error>) -> Void)
 }
 
@@ -37,14 +36,20 @@ class OAuthService {
         return oauthClient.getAuthPageUrl(state: state)
     }
     
-    
+    func getParameterFrom(url: String, param: String) -> String? {
+
+        guard let url = URLComponents(string: url) else { return nil }
+
+        return url.queryItems?.first(where: { $0.name == param })?.value
+
+    }
     func exchangeCodeForToken(url: URL) {
-        guard let state = state, let code = getCodeFromUrl(url: url) else {
+        guard let code = getCodeFromUrl(url: url) else {
             onAuthenticationResult?(.failure(OAthError.malformedLink))
             return
         }
         
-        oauthClient.exchangeCodeForToken(code: code, state: state) { [weak self] result in
+        oauthClient.exchangeCodeForToken(code: code) { [weak self] result in
             switch result {
             case .success(let tokenBag):
                 try? self?.tokenRepository.setToken(tokenBag: tokenBag)
@@ -59,11 +64,9 @@ class OAuthService {
 //MARK: - Private Methods
 private extension OAuthService {
     func getCodeFromUrl(url: URL) -> String? {
-        let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        let code = components?.queryItems?.first(where: { $0.name == "code" })?.value
-        let state = components?.queryItems?.first(where: { $0.name == "state" })?.value
-        
-        if let code = code, let state = state, state == self.state {
+        let code = self.getParameterFrom(url: url.absoluteString, param: "code")
+        print(code ?? "ael")
+        if let code = code {
             return code
         } else {
             return nil

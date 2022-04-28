@@ -7,5 +7,6 @@ target 'IEEApps' do
 
   # Pods for IEEApps
   pod “Alamofire”
+  pod "Keychain"
 
 end

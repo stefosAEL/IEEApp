@@ -7,7 +7,7 @@
 
 import Foundation
 
-let scheme = "https://login.iee.ihu.gr"
+let scheme = "https://github.com/stefosAEL"
 
 enum DeepLink: Hashable {
     case oAuth(URL)
@@ -16,7 +16,7 @@ enum DeepLink: Hashable {
         let authLinkToDeepLink: (URL) -> DeepLink = { .oAuth($0) }
         
         let deepLinkMap: [String: (URL) -> DeepLink] = [
-            "\(scheme)/authorization/": authLinkToDeepLink
+            "\(scheme)/IEEApp": authLinkToDeepLink
         ]
         
         let deepLink = deepLinkMap.first(where: { url.absoluteString.hasPrefix($0.key) })?.value

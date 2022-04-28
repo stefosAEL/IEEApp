@@ -35,16 +35,13 @@ class RemoteOAuthClient: OAuthClient {
         let client_id: String
         let client_secret: String
         let code: String
-        let redirect_uri: String
-        
+        let grant_type:String
     }
     
     struct TokenResponse: Decodable {
-        let accessToken: String
+        let access_token: String
         
-        private enum CodingKeys: String, CodingKey {
-            case accessToken = "access_token"
-        }
+        
     }
     
     private let config: OAuthConfig
@@ -66,19 +63,19 @@ class RemoteOAuthClient: OAuthClient {
         return httpRequest.asURLRequest()?.url
     }
     
-    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, Error>) -> Void) {
+    func exchangeCodeForToken(code: String, completion: @escaping (Result<TokenBag, Error>) -> Void) {
         let params = TokenParams(client_id: config.clientId,
                                  client_secret: config.clientSecret,
                                  code: code,
-                                 redirect_uri: config.redirectUri.absoluteString)
+                                 grant_type: "authorization_code")
         let httpRequest = HttpRequest(baseUrl: config.tokenUrl,
-                                      method: .get,
+                                      method: .post,
                                       params: params,
-                                      headers: ["Accept": "application/json"])
+                                      headers: ["Accept": "application/x-www-form-urlencoded"])
         httpClient.performRequest(request: httpRequest) { (result: Result<TokenResponse, HTTPClient.RequestError>) in
             switch result {
             case .success(let response):
-                completion(.success(TokenBag(accessToken: response.accessToken)))
+                completion(.success(TokenBag(accessToken: response.access_token)))
             case .failure(let error):
                 completion(.failure(error))
             }

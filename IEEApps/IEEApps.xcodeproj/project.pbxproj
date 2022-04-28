@@ -19,6 +19,7 @@
 		B130F61F27F0B8D6003D1B98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B130F61E27F0B8D6003D1B98 /* Assets.xcassets */; };
 		B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F62C27F0BB96003D1B98 /* MainViewController.swift */; };
 		B15EA83428087719009C7F33 /* LogginWebViewVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B15EA83328087719009C7F33 /* LogginWebViewVC.storyboard */; };
+		B16347CA28182C0F00AEE41E /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16347C928182C0F00AEE41E /* AuthModel.swift */; };
 		B17710A6280AD145001EDDD1 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17710A5280AD145001EDDD1 /* OAuthClient.swift */; };
 		B17710A8280AD179001EDDD1 /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17710A7280AD179001EDDD1 /* TokenRepository.swift */; };
 		B17710AA280AD1E2001EDDD1 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17710A9280AD1E2001EDDD1 /* HttpRequest.swift */; };
@@ -52,6 +53,7 @@
 		B130F62327F0B8D6003D1B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B130F62C27F0BB96003D1B98 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B15EA83328087719009C7F33 /* LogginWebViewVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogginWebViewVC.storyboard; sourceTree = "<group>"; };
+		B16347C928182C0F00AEE41E /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		B17710A5280AD145001EDDD1 /* OAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		B17710A7280AD179001EDDD1 /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		B17710A9280AD1E2001EDDD1 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				B1FFD1F027F89D3E000B4A69 /* PublicAnnModel.swift */,
 				B1FFD1F227F8A1C7000B4A69 /* PublicAnnsModel.swift */,
+				B16347C928182C0F00AEE41E /* AuthModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				B1FC320127F75FE9001DFCCE /* SettingsViewController.swift in Sources */,
 				B11736412804A60E0036D584 /* PublicAnnTableViewCell.swift in Sources */,
 				B17710AC280AD2BB001EDDD1 /* HttpClient.swift in Sources */,
+				B16347CA28182C0F00AEE41E /* AuthModel.swift in Sources */,
 				B17710AA280AD1E2001EDDD1 /* HttpRequest.swift in Sources */,
 				B10AAA5A27FC59B6004EEE34 /* DataRequest+Processing.swift in Sources */,
 			);

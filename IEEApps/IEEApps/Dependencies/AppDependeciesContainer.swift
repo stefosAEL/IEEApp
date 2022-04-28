@@ -19,7 +19,7 @@ class AppDependencyContainer {
                                       responseType: "code",
                                       scope:["announcements","profile","notifications","refresh_token","edit_notifications"],
                                       tokenUrl: URL(string: "https://login.iee.ihu.gr/token")!,
-                                      clientSecret: "yourClientSecret")
+                                      clientSecret: "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq")
                                       
         let oAuthClient = RemoteOAuthClient(config: oAuthConfig, httpClient: HTTPClient())
         let oAuthService = OAuthService(oauthClient: oAuthClient, tokenRepository: tokenRepository)
@@ -29,7 +29,11 @@ class AppDependencyContainer {
             }
         }
         deepLinkHandler.addCallback(deepLinkCallback, forDeepLink: DeepLink(url: redirectUri)!)
-        let loginVC = MainViewController(oAuthService: oAuthService, makeHomeViewController: makeHomeViewController)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let loginVC = storyBoard.instantiateViewController(withIdentifier: "MainStoryboardID") as! MainViewController
+        loginVC.oAuthService = oAuthService
+        loginVC.makeHomeViewController = makeHomeViewController
+
         let navigationController = UINavigationController(rootViewController: loginVC)
         return navigationController
     }
@@ -38,15 +42,8 @@ class AppDependencyContainer {
         let tabBarController = UITabBarController()
         
         let repoVC = UIViewController()
-        let repoTabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "repos"), tag: 0)
-        repoTabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        repoVC.tabBarItem = repoTabBarItem
         
         let profileVC = UIViewController()
-        let profileTabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "profile"), tag: 1)
-        profileTabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        profileVC.tabBarItem = profileTabBarItem
-        
         tabBarController.viewControllers = [repoVC, profileVC].map { UINavigationController(rootViewController: $0)}
         
         return tabBarController

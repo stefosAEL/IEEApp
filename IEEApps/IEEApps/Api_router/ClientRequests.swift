@@ -25,5 +25,15 @@ class ClientRequests {
             }
         }
     }
+    static func getAccessToken(client_id: String, client_secret: String, code: String, grant_type: String,  completion: @escaping (AuthModel?) -> Void) {
+        sessionManager.request(APIRouter.getToken(grant_type: grant_type, client_id: client_id, client_secret: client_secret, code: code)).getDecodable { (response: AFDataResponse<AuthModel>) in
+            switch response.result {
+            case .success(let value):
+                completion(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
 }

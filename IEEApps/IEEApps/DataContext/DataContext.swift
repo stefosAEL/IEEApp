@@ -12,6 +12,10 @@ class DataContext {
     
     var publicAnnouncements: [PublicAnn] = []
     
+    var code: String?
+    var accessToken: String?
+    var refreshToken: String?
+    
 }
 
 
