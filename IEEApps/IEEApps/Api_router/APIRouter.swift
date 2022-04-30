@@ -26,8 +26,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .getPublicAnnouncments:
                 return .get
-        case .getLoginAnnouncments:
-            return .get
+            case .getLoginAnnouncments:
+                return .get
         }
     }
     
@@ -36,7 +36,7 @@ enum APIRouter: URLRequestConvertible {
             case .getPublicAnnouncments:
                 return "/announcements"
         case .getLoginAnnouncments:
-            return "/announcements"
+                return "/announcements"
         }
     }
     
@@ -46,8 +46,8 @@ enum APIRouter: URLRequestConvertible {
             switch self {
                 case .getPublicAnnouncments:
                     return JSONEncoding.default
-            case .getLoginAnnouncments:
-                return JSONEncoding.default
+                case .getLoginAnnouncments:
+                    return JSONEncoding.default
                 
             }
         default:
@@ -56,15 +56,16 @@ enum APIRouter: URLRequestConvertible {
     }
     
     var headers: [String : String] {
+        let token = DataContext.instance.accessToken
         var headers = ["Content-Type" : "application/json"]
         switch self {
-            
         case .getPublicAnnouncments:
             break
         case .getLoginAnnouncments:
-            headers["token"]="\(String(describing: DataContext.instance.accessToken))"
-            
-        }
+            print(token)
+            if(token != nil){
+                headers["token"] = "\(String(describing: token))"
+            }}
     
         
         return headers 

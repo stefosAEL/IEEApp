@@ -50,7 +50,7 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
                  authModel = getToken(code: code)
                 DataContext.instance.code = code
                 DataContext.instance.refreshToken = authModel?.refresh_token
-                DataContext.instance.accessToken = authModel?.access_token
+                DataContext.instance.accessToken = authModel?.access_token ?? "nill"
                 let storyboard = LoggInViewController()
                 storyboard.modalPresentationStyle = .fullScreen
 
