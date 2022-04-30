@@ -11,15 +11,14 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
 
     case getPublicAnnouncments
-    case getToken(grant_type: String,client_id: String,client_secret: String,code: String)
+    case getLoginAnnouncments
     
     var baseURL: String? {
         switch self {
             case .getPublicAnnouncments:
                 return "https://aboard.iee.ihu.gr//api"
-            case .getToken:
-                return "https://login.iee.ihu.gr"
-            
+            case .getLoginAnnouncments:
+            return "https://aboard.iee.ihu.gr//api"
         }
     }
     
@@ -27,8 +26,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .getPublicAnnouncments:
                 return .get
-            case .getToken:
-                return .post
+        case .getLoginAnnouncments:
+            return .get
         }
     }
     
@@ -36,8 +35,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .getPublicAnnouncments:
                 return "/announcements"
-            case .getToken:
-                return "/token"
+        case .getLoginAnnouncments:
+            return "/announcements"
         }
     }
     
@@ -47,8 +46,8 @@ enum APIRouter: URLRequestConvertible {
             switch self {
                 case .getPublicAnnouncments:
                     return JSONEncoding.default
-                case .getToken:
-                    return URLEncoding.default
+            case .getLoginAnnouncments:
+                return JSONEncoding.default
                 
             }
         default:
@@ -59,15 +58,16 @@ enum APIRouter: URLRequestConvertible {
     var headers: [String : String] {
         var headers = ["Content-Type" : "application/json"]
         switch self {
-            case .getToken:
-               
-            headers["Content-Type"] = "application/x-www-form-urlencode"
-            headers["Cookie"] = "connect.sid=s%3Axd_v-ikpMWEEHhw-QMJDT8B0hbFgl9Yl.9zywdEQreC5wdmSPD%2BA4Gq9Jc3xkris4a%2FrAnsUdnQE"
+            
         case .getPublicAnnouncments:
             break
+        case .getLoginAnnouncments:
+            headers["token"]="\(String(describing: DataContext.instance.accessToken))"
+            
         }
     
-        return headers
+        
+        return headers 
     }
     
     public func asURLRequest() throws -> URLRequest {
@@ -83,16 +83,9 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case.getPublicAnnouncments:
             parameters = [:]
-        case.getToken(let client_id, let client_secret, let code , let grant_type ):
-            parameters = [
-                "client_id" : client_id,
-                "client_secret" : client_secret,
-                "code" : code,
-                "grant_type": grant_type
-            ]
-            
+        case .getLoginAnnouncments:
+            parameters = [:]
         }
-    
         return try encoding.encode(request, with: parameters)
     }
     

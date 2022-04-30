@@ -11,6 +11,7 @@ class DataContext {
     static let instance = DataContext()
     
     var publicAnnouncements: [PublicAnn] = []
+    var logginAnnouncements: [PublicAnn] = []
     
     var code: String?
     var accessToken: String?

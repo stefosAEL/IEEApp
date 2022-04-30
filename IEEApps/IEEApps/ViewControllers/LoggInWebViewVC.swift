@@ -13,13 +13,14 @@ import WebKit
 
 class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINavigationBarDelegate {
     var webView: WKWebView!
+    var authModel:AuthModel?
     let navBar: UINavigationBar = {
         let bar = UINavigationBar()
         bar.backgroundColor = UIColor.white
         return bar
     }()
     public var url: URL?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let webConfiguration = WKWebViewConfiguration()
@@ -45,18 +46,16 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
             let code = self.getParameterFrom(url: url.absoluteString, param: "code")
         
             if let code = code {
-//                DataContext.instance.getAccessToken(client_id: "62408ef084b2a60fc0ba856c", client_secret: "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq", code: code, grant_type: "authorization_code", completion: {  response in
-//                    if let response = response {
-//                        print(response.access_token)
-//                        DataContext.instance.accessToken = response.access_token
-//                        DataContext.instance.refreshToken = response.refresh_token
-//                    }
-//                })
-//                dismiss(animated: true)
-                getToken(code: code)
                 print(code)
-                
-                
+                 authModel = getToken(code: code)
+                DataContext.instance.code = code
+                DataContext.instance.refreshToken = authModel?.refresh_token
+                DataContext.instance.accessToken = authModel?.access_token
+                let storyboard = LoggInViewController()
+                storyboard.modalPresentationStyle = .fullScreen
+
+                present(storyboard, animated: true, completion: nil)
+
             }
             webView.allowsLinkPreview = false
             decisionHandler(.allow)
@@ -82,9 +81,9 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
 
     }
 
-    func getToken(code: String) {
+    func getToken(code: String) -> AuthModel{
         let semaphore = DispatchSemaphore (value: 0)
-
+        var decodedResponse :AuthModel?
         let parameters = "grant_type=authorization_code&client_id=62408ef084b2a60fc0ba856c&client_secret=4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq&code=\(code)"
         let postData =  parameters.data(using: .utf8)
 
@@ -101,14 +100,15 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
             semaphore.signal()
             return
           }
+            decodedResponse = try! JSONDecoder().decode(AuthModel.self, from: data)
             print(String(data: data, encoding: .utf8)!)
-            
-            
-          semaphore.signal()
+            semaphore.signal()
         }
+        
 
         task.resume()
         semaphore.wait()
+        return decodedResponse!
     }
     
 

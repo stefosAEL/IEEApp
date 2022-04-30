@@ -334,8 +334,8 @@
             filePath = "IEEApps/ViewControllers/LoggInWebViewVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "IEEApps/ViewControllers/LoggInWebViewVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -407,70 +407,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "825473EB-0074-4E72-9D44-04C806DAF200"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IEEApps/ViewControllers/LoggInWebViewVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0D494B9D-0773-40CB-AFE7-B4C1A1680ACB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IEEApps/DataContext/DataContext+ClientRequests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "getAccessToken(client_id:client_secret:code:grant_type:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0D494B9D-0773-40CB-AFE7-B4C1A1680ACB - 912065ee6d56f735"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;IEEApps.AuthModel&gt;) -&gt; () in IEEApps.DataContext.getAccessToken(client_id: Swift.String, client_secret: Swift.String, code: Swift.String, grant_type: Swift.String, completion: (Swift.Optional&lt;IEEApps.AuthModel&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "IEEApps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/skafkalias/Documents/GitHub/IEEApp/IEEApps/IEEApps/DataContext/DataContext+ClientRequests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "173">
-               </Location>
-               <Location
-                  uuid = "0D494B9D-0773-40CB-AFE7-B4C1A1680ACB - 912065ee6d56f735"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;IEEApps.AuthModel&gt;) -&gt; () in IEEApps.DataContext.getAccessToken(client_id: Swift.String, client_secret: Swift.String, code: Swift.String, grant_type: Swift.String, completion: (Swift.Optional&lt;IEEApps.AuthModel&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "IEEApps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/skafkalias/Documents/GitHub/IEEApp/IEEApps/IEEApps/DataContext/DataContext+ClientRequests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "307">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "23D79CCE-03BC-4037-8B2F-E49313F604A1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -478,26 +414,10 @@
             filePath = "IEEApps/Api_router/APIRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "method"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C16922CF-69A2-490D-83D5-E970738CCFD0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IEEApps/DataContext/DataContext+ClientRequests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "getAccessToken(client_id:client_secret:code:grant_type:completion:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -519,65 +439,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C5D8C29-1BA5-46D7-9D27-B9FFDD29B145"
-            shouldBeEnabled = "No"
+            uuid = "2A7A02A3-25DA-44E0-B6E2-9B8281AAB1A4"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IEEApps/DataContext/DataContext+ClientRequests.swift"
+            filePath = "IEEApps/ViewControllers/LoggInWebViewVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "getAccessToken(client_id:client_secret:code:grant_type:completion:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6D9968F4-4D70-481C-8CEF-108D58DFE2A0"
-            shouldBeEnabled = "No"
+            uuid = "DDC45436-D46D-43A1-8F92-7AEE93F96748"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IEEApps/Api_router/ClientRequests.swift"
+            filePath = "IEEApps/Model/PublicAnnModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "getAccessToken(client_id:client_secret:code:grant_type:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0BAB17CC-DDC9-45D3-B231-F425BDD3EF3B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IEEApps/Api_router/ClientRequests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "getAccessToken(client_id:client_secret:code:grant_type:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5E197BC3-8EA4-4BA7-B62C-0B3EC795BA90"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IEEApps/Api_router/ClientRequests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "getAccessToken(client_id:client_secret:code:grant_type:completion:)"
-            landmarkType = "7">
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

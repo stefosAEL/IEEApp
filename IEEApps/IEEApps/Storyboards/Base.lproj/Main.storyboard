@@ -379,10 +379,10 @@
             </objects>
             <point key="canvasLocation" x="-488.40579710144931" y="174.77678571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--LoggIn-->
         <scene sceneID="NVG-Ze-GEw">
             <objects>
-                <viewController id="EhS-QR-KcE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoggIn" title="LoggIn" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EhS-QR-KcE" customClass="LoggInViewController" customModule="IEEApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gCQ-lo-jql">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,7 +402,7 @@
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PublicAnnsCell" id="yFM-Ny-DHg" customClass="PublicAnnTableViewCell" customModule="IEEApps" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoggInAnnsCell" id="yFM-Ny-DHg" customClass="LogginAnnTableViewCell" customModule="IEEApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="115.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yFM-Ny-DHg" id="8fc-mj-qRI">
@@ -484,12 +484,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="bodyLabel" destination="WXC-tL-p22" id="Ppt-bJ-OzE"/>
-                                            <outlet property="dateTimeLabel" destination="qd0-ID-VQh" id="jdp-so-U5j"/>
-                                            <outlet property="event2Label" destination="1IU-br-las" id="eBG-A5-4fk"/>
-                                            <outlet property="eventLabel" destination="rcM-Xr-pak" id="ix4-da-eBH"/>
-                                            <outlet property="teacherLabel" destination="27J-hN-t7k" id="KZN-G2-gLL"/>
-                                            <outlet property="titleLabel" destination="PvG-Ku-npy" id="0RJ-2i-GoR"/>
+                                            <outlet property="bodyLabel" destination="WXC-tL-p22" id="742-Cq-cTr"/>
+                                            <outlet property="dateTimeLabel" destination="qd0-ID-VQh" id="NLt-Ge-Ilc"/>
+                                            <outlet property="event2Label" destination="1IU-br-las" id="kDb-EL-HMb"/>
+                                            <outlet property="eventLabel" destination="rcM-Xr-pak" id="Uri-1u-8dm"/>
+                                            <outlet property="teacherLabel" destination="27J-hN-t7k" id="oHa-EI-1PP"/>
+                                            <outlet property="titleLabel" destination="WXC-tL-p22" id="ce2-8o-R9C"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -521,6 +521,9 @@
                             <constraint firstItem="8A7-W6-X7r" firstAttribute="trailing" secondItem="Fdb-oO-z5k" secondAttribute="trailing" id="ysr-6X-Vs1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Fdb-oO-z5k" id="raa-cH-91A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJx-A6-mse" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

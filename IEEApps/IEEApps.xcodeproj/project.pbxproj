@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		985407028610455E5A2ED87B /* Pods_IEEApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */; };
+		B1086612281D777A008B68F6 /* LogginAnns.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086611281D777A008B68F6 /* LogginAnns.swift */; };
+		B1086614281D78CB008B68F6 /* LogginAnnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */; };
+		B1086616281D794A008B68F6 /* LoggInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086615281D794A008B68F6 /* LoggInViewController.swift */; };
 		B10AAA5627FC586F004EEE34 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5527FC586F004EEE34 /* APIRouter.swift */; };
 		B10AAA5A27FC59B6004EEE34 /* DataRequest+Processing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5927FC59B6004EEE34 /* DataRequest+Processing.swift */; };
 		B10AAA5D27FC5AEC004EEE34 /* DataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5C27FC5AEC004EEE34 /* DataContext.swift */; };
@@ -40,6 +43,9 @@
 		295220E9518996FFD2FFC4FA /* Pods-IEEApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.debug.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.debug.xcconfig"; sourceTree = "<group>"; };
 		3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IEEApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8903D0DFE36AF6B65ABEFA76 /* Pods-IEEApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.release.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.release.xcconfig"; sourceTree = "<group>"; };
+		B1086611281D777A008B68F6 /* LogginAnns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogginAnns.swift; sourceTree = "<group>"; };
+		B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogginAnnTableViewCell.swift; sourceTree = "<group>"; };
+		B1086615281D794A008B68F6 /* LoggInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggInViewController.swift; sourceTree = "<group>"; };
 		B10AAA5527FC586F004EEE34 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		B10AAA5927FC59B6004EEE34 /* DataRequest+Processing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataRequest+Processing.swift"; sourceTree = "<group>"; };
 		B10AAA5C27FC5AEC004EEE34 /* DataContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContext.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 				B1FC320027F75FE9001DFCCE /* SettingsViewController.swift */,
 				B130F62C27F0BB96003D1B98 /* MainViewController.swift */,
 				B1E0040528083FE70066C50E /* LoggInWebViewVC.swift */,
+				B1086615281D794A008B68F6 /* LoggInViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 				B130F61E27F0B8D6003D1B98 /* Assets.xcassets */,
 				B130F62327F0B8D6003D1B98 /* Info.plist */,
 				B11736402804A60E0036D584 /* PublicAnnTableViewCell.swift */,
+				B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */,
 			);
 			path = IEEApps;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 				B1FFD1F027F89D3E000B4A69 /* PublicAnnModel.swift */,
 				B1FFD1F227F8A1C7000B4A69 /* PublicAnnsModel.swift */,
 				B16347C928182C0F00AEE41E /* AuthModel.swift */,
+				B1086611281D777A008B68F6 /* LogginAnns.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -338,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1086616281D794A008B68F6 /* LoggInViewController.swift in Sources */,
 				B17710BB280AD53E001EDDD1 /* Encodable.swift in Sources */,
 				B17710B8280AD4C9001EDDD1 /* ClientRequests.swift in Sources */,
 				B1E0040628083FE70066C50E /* LoggInWebViewVC.swift in Sources */,
@@ -349,9 +359,11 @@
 				B17710A6280AD145001EDDD1 /* OAuthClient.swift in Sources */,
 				B10AAA5627FC586F004EEE34 /* APIRouter.swift in Sources */,
 				B130F61627F0B8D4003D1B98 /* AppDelegate.swift in Sources */,
+				B1086614281D78CB008B68F6 /* LogginAnnTableViewCell.swift in Sources */,
 				B130F61827F0B8D4003D1B98 /* SceneDelegate.swift in Sources */,
 				B17710B6280AD451001EDDD1 /* RemoteOAuthClient.swift in Sources */,
 				B10AAA5F27FC5B48004EEE34 /* DataContext+ClientRequests.swift in Sources */,
+				B1086612281D777A008B68F6 /* LogginAnns.swift in Sources */,
 				B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */,
 				B10AAA5D27FC5AEC004EEE34 /* DataContext.swift in Sources */,
 				B1FFD1F127F89D3E000B4A69 /* PublicAnnModel.swift in Sources */,
