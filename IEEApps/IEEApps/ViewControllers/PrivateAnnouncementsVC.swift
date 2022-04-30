@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LoggInViewController:UIViewController, UITableViewDelegate,UITableViewDataSource{
+class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDataSource{
      var loggInAnns: [PublicAnn]?
     @IBOutlet weak var tableView: UITableView!
     let reuseIdentifier = "LoggInAnnsCell"

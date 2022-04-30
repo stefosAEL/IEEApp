@@ -35,7 +35,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .getPublicAnnouncments:
                 return "/announcements"
-        case .getLoginAnnouncments:
+            case .getLoginAnnouncments:
                 return "/announcements"
         }
     }
@@ -63,9 +63,8 @@ enum APIRouter: URLRequestConvertible {
             break
         case .getLoginAnnouncments:
             print(token)
-            if(token != nil){
                 headers["token"] = "\(String(describing: token))"
-            }}
+            }
     
         
         return headers 

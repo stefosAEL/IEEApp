@@ -51,10 +51,10 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
                 DataContext.instance.code = code
                 DataContext.instance.refreshToken = authModel?.refresh_token
                 DataContext.instance.accessToken = authModel?.access_token ?? "nill"
-                let storyboard = LoggInViewController()
-                storyboard.modalPresentationStyle = .fullScreen
-
-                present(storyboard, animated: true, completion: nil)
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PrivateAnnouncementsVC")
+                viewcontroller.modalPresentationStyle = .fullScreen
+                present(viewcontroller, animated: true, completion: nil)
 
             }
             webView.allowsLinkPreview = false

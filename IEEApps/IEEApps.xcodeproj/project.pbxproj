@@ -10,7 +10,7 @@
 		985407028610455E5A2ED87B /* Pods_IEEApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */; };
 		B1086612281D777A008B68F6 /* LogginAnns.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086611281D777A008B68F6 /* LogginAnns.swift */; };
 		B1086614281D78CB008B68F6 /* LogginAnnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */; };
-		B1086616281D794A008B68F6 /* LoggInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086615281D794A008B68F6 /* LoggInViewController.swift */; };
+		B1086616281D794A008B68F6 /* PrivateAnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086615281D794A008B68F6 /* PrivateAnnouncementsVC.swift */; };
 		B10AAA5627FC586F004EEE34 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5527FC586F004EEE34 /* APIRouter.swift */; };
 		B10AAA5A27FC59B6004EEE34 /* DataRequest+Processing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5927FC59B6004EEE34 /* DataRequest+Processing.swift */; };
 		B10AAA5D27FC5AEC004EEE34 /* DataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5C27FC5AEC004EEE34 /* DataContext.swift */; };
@@ -45,7 +45,7 @@
 		8903D0DFE36AF6B65ABEFA76 /* Pods-IEEApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.release.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.release.xcconfig"; sourceTree = "<group>"; };
 		B1086611281D777A008B68F6 /* LogginAnns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogginAnns.swift; sourceTree = "<group>"; };
 		B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogginAnnTableViewCell.swift; sourceTree = "<group>"; };
-		B1086615281D794A008B68F6 /* LoggInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggInViewController.swift; sourceTree = "<group>"; };
+		B1086615281D794A008B68F6 /* PrivateAnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAnnouncementsVC.swift; sourceTree = "<group>"; };
 		B10AAA5527FC586F004EEE34 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		B10AAA5927FC59B6004EEE34 /* DataRequest+Processing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataRequest+Processing.swift"; sourceTree = "<group>"; };
 		B10AAA5C27FC5AEC004EEE34 /* DataContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContext.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 				B1FC320027F75FE9001DFCCE /* SettingsViewController.swift */,
 				B130F62C27F0BB96003D1B98 /* MainViewController.swift */,
 				B1E0040528083FE70066C50E /* LoggInWebViewVC.swift */,
-				B1086615281D794A008B68F6 /* LoggInViewController.swift */,
+				B1086615281D794A008B68F6 /* PrivateAnnouncementsVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1086616281D794A008B68F6 /* LoggInViewController.swift in Sources */,
+				B1086616281D794A008B68F6 /* PrivateAnnouncementsVC.swift in Sources */,
 				B17710BB280AD53E001EDDD1 /* Encodable.swift in Sources */,
 				B17710B8280AD4C9001EDDD1 /* ClientRequests.swift in Sources */,
 				B1E0040628083FE70066C50E /* LoggInWebViewVC.swift in Sources */,

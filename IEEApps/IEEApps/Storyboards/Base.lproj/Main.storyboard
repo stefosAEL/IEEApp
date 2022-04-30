@@ -382,7 +382,7 @@
         <!--LoggIn-->
         <scene sceneID="NVG-Ze-GEw">
             <objects>
-                <viewController storyboardIdentifier="LoggIn" title="LoggIn" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EhS-QR-KcE" customClass="LoggInViewController" customModule="IEEApps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivateAnnouncementsVC" title="LoggIn" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EhS-QR-KcE" customClass="PrivateAnnouncementsVC" customModule="IEEApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gCQ-lo-jql">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
