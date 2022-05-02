@@ -12,6 +12,7 @@ struct PublicAnn: Codable {
     let body: String
     let created_at: String
     let tags: [Tags]
+    
 }
 
 struct Teacher: Codable {
@@ -21,3 +22,5 @@ struct Teacher: Codable {
 struct Tags:Codable {
     let title: String
 }
+
+

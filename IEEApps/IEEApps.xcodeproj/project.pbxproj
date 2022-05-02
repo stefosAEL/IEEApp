@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		985407028610455E5A2ED87B /* Pods_IEEApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */; };
-		B1086612281D777A008B68F6 /* LogginAnns.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086611281D777A008B68F6 /* LogginAnns.swift */; };
 		B1086614281D78CB008B68F6 /* LogginAnnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */; };
 		B1086616281D794A008B68F6 /* PrivateAnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1086615281D794A008B68F6 /* PrivateAnnouncementsVC.swift */; };
 		B10AAA5627FC586F004EEE34 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AAA5527FC586F004EEE34 /* APIRouter.swift */; };
@@ -43,7 +42,6 @@
 		295220E9518996FFD2FFC4FA /* Pods-IEEApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.debug.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.debug.xcconfig"; sourceTree = "<group>"; };
 		3965A060FF13690A8875E4CB /* Pods_IEEApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IEEApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8903D0DFE36AF6B65ABEFA76 /* Pods-IEEApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IEEApps.release.xcconfig"; path = "Target Support Files/Pods-IEEApps/Pods-IEEApps.release.xcconfig"; sourceTree = "<group>"; };
-		B1086611281D777A008B68F6 /* LogginAnns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogginAnns.swift; sourceTree = "<group>"; };
 		B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogginAnnTableViewCell.swift; sourceTree = "<group>"; };
 		B1086615281D794A008B68F6 /* PrivateAnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAnnouncementsVC.swift; sourceTree = "<group>"; };
 		B10AAA5527FC586F004EEE34 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				B1FFD1F027F89D3E000B4A69 /* PublicAnnModel.swift */,
 				B1FFD1F227F8A1C7000B4A69 /* PublicAnnsModel.swift */,
 				B16347C928182C0F00AEE41E /* AuthModel.swift */,
-				B1086611281D777A008B68F6 /* LogginAnns.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,7 +360,6 @@
 				B130F61827F0B8D4003D1B98 /* SceneDelegate.swift in Sources */,
 				B17710B6280AD451001EDDD1 /* RemoteOAuthClient.swift in Sources */,
 				B10AAA5F27FC5B48004EEE34 /* DataContext+ClientRequests.swift in Sources */,
-				B1086612281D777A008B68F6 /* LogginAnns.swift in Sources */,
 				B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */,
 				B10AAA5D27FC5AEC004EEE34 /* DataContext.swift in Sources */,
 				B1FFD1F127F89D3E000B4A69 /* PublicAnnModel.swift in Sources */,

@@ -12,11 +12,15 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
      var loggInAnns: [PublicAnn]?
     @IBOutlet weak var tableView: UITableView!
     let reuseIdentifier = "LoggInAnnsCell"
-
+    
+    @IBOutlet weak var settingsIcon: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        settingsIcon.isUserInteractionEnabled = true
+        settingsIcon.addGestureRecognizer(tapGestureRecognizer)
         
         DataContext.instance.getLoggInAnnouncemnets(completion: { [weak self] loggInAnns in
             if let loggInAnns = loggInAnns {
@@ -54,4 +58,35 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         cell.clipsToBounds = true
         return cell
     }
-}
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "SettingsView")
+        viewcontroller.modalPresentationStyle = .fullScreen
+        present(viewcontroller, animated: true, completion: nil)
+        // Your action
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == ((loggInAnns?.count ?? 0) - 1)  {
+            displayData()
+            tableView.reloadInputViews()
+        }
+    }
+
+    func displayData(){
+        DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] publicAnns in
+            if (publicAnns?.meta?.last_page ??  0) > (DataContext.instance.page){
+                    DataContext.instance.page = (DataContext.instance.page) + 1
+                    DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] publicAnns in
+                        if let publicAnns = publicAnns {
+                            for Ann in publicAnns.data{
+                                self?.loggInAnns?.append(Ann)
+                            }
+                        }
+                        self?.tableView.reloadData()
+                
+                    })}
+        })
+        }
+    }
+

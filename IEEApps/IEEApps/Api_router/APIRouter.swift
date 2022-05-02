@@ -10,7 +10,7 @@ import Alamofire
 
 enum APIRouter: URLRequestConvertible {
 
-    case getPublicAnnouncments
+    case getPublicAnnouncments(page:Int)
     case getLoginAnnouncments
     
     var baseURL: String? {
@@ -57,13 +57,16 @@ enum APIRouter: URLRequestConvertible {
     
     var headers: [String : String] {
         let token = DataContext.instance.accessToken
-        var headers = ["Content-Type" : "application/json"]
+        var headers = [
+            "Content-Type": "application/json"
+        ]
+
         switch self {
         case .getPublicAnnouncments:
             break
         case .getLoginAnnouncments:
             print(token)
-                headers["token"] = "\(String(describing: token))"
+            headers=["token" :"\(String(describing: token))"]
             }
     
         
@@ -83,6 +86,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case.getPublicAnnouncments:
             parameters = [:]
+            parameters = ["page" : DataContext.instance.page]
+
         case .getLoginAnnouncments:
             parameters = [:]
         }

@@ -12,33 +12,31 @@ import WebKit
 import SafariServices
 
 
-class MainViewController : UIViewController,UITableViewDelegate, UITableViewDataSource,WKUIDelegate  {
+class MainViewController : UIViewController,UITableViewDelegate, UITableViewDataSource,WKUIDelegate,UIScrollViewDelegate  {
     let reuseIdentifier = "PublicAnnsCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var LogInBtn: UIButton!
-    var publicAnns: [PublicAnn]?
+    var publicAnn: [PublicAnn]?
     var oAuthService: OAuthService?
     var makeHomeViewController: (() -> UIViewController)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
-        oAuthService?.onAuthenticationResult = { [weak self] in self?.onAuthenticationResult(result: $0) }
         LogInBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 15)
         tableView.dataSource = self
         tableView.delegate = self
 
-        DataContext.instance.getAnnouncemnets(completion: { [weak self] publicAnns in
+        DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] publicAnns in
             if let publicAnns = publicAnns {
-                self?.publicAnns = publicAnns.data
+                self?.publicAnn = publicAnns.data
             }
             self?.tableView.reloadData()
         })
-    
-    }
+}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let publicAnns = publicAnns
+        if let publicAnns = publicAnn
         {
            return publicAnns.count
         }else {
@@ -55,7 +53,7 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create a new cell if needed or reuse an old one
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier , for: indexPath as IndexPath) as! PublicAnnTableViewCell
-        let announcement = publicAnns?[indexPath.row]
+        let announcement = publicAnn?[indexPath.row]
         //cell.teacherLabel = announcement?.author.name
         cell.teacherLabel.text=announcement?.author.name
         cell.bodyLabel.text = announcement?.body
@@ -78,27 +76,29 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
         present(webViewVC, animated: true, completion: nil)
         
     }
-    func onAuthenticationResult(result: Result<TokenBag, Error>) {
-        DispatchQueue.main.async {
-            self.presentedViewController?.dismiss(animated: true) {
-                switch result {
-                case .success:
-                    guard let makeHomeViewController = self.makeHomeViewController else {
-                        return
-                    }
-
-                    self.navigationController?.pushViewController(makeHomeViewController(), animated: true)
-
-                case .failure:
-                    let alert = UIAlertController(title: "Something went wrong :(",
-                                                  message: "Authentication error",
-                                                  preferredStyle: .alert)
-
-                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                }
-            }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == ((publicAnn?.count ?? 0) - 1)  {
+            displayData()
+            tableView.reloadInputViews()
         }
     }
 
-}
+    func displayData(){
+        DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] publicAnns in
+            if (publicAnns?.meta?.last_page ??  0) > (DataContext.instance.page){
+                    DataContext.instance.page = (DataContext.instance.page) + 1
+                    DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] publicAnns in
+                        if let publicAnns = publicAnns {
+                            for Ann in publicAnns.data{
+                                self?.publicAnn?.append(Ann)
+                            }
+                        }
+                        self?.tableView.reloadData()
+                
+                    })}
+        })
+        }
+    }
+        
+                                              
+

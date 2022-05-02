@@ -9,8 +9,8 @@ import Foundation
 
 extension DataContext {
     
-    func getAnnouncemnets(completion: @escaping (PublicAnns?)-> Void) {
-        ClientRequests.getPublicAnnouncements(completion: { publicAnns in
+    func getAnnouncemnets(page:Int,completion: @escaping (PublicAnns?)-> Void) {
+        ClientRequests.getPublicAnnouncements(page:page ,completion: { publicAnns in
             guard let publicAnns = publicAnns else {
                 completion(nil)
                 return
@@ -19,7 +19,7 @@ extension DataContext {
         })
     }
     
-    func getLoggInAnnouncemnets(completion: @escaping (LogginAnns?)-> Void) {
+    func getLoggInAnnouncemnets(completion: @escaping (PublicAnns?)-> Void) {
         ClientRequests.getLogginAnnouncements(completion: { logginAnns in
             guard let logginAnns = logginAnns else {
                 completion(nil)

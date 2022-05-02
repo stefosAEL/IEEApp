@@ -15,8 +15,8 @@ class ClientRequests {
         return sessMan
     }()
     
-    static func getPublicAnnouncements(completion: @escaping (PublicAnns?) -> Void) {
-        sessionManager.request(APIRouter.getPublicAnnouncments).getDecodable { (response: AFDataResponse<PublicAnns>) in
+    static func getPublicAnnouncements(page:Int , completion: @escaping (PublicAnns?) -> Void) {
+        sessionManager.request(APIRouter.getPublicAnnouncments(page: page)).getDecodable { (response: AFDataResponse<PublicAnns>) in
             switch response.result {
             case .success(let value):
                 completion(value)
@@ -25,8 +25,8 @@ class ClientRequests {
             }
         }
     }
-    static func getLogginAnnouncements(completion: @escaping (LogginAnns?) -> Void) {
-        sessionManager.request(APIRouter.getLoginAnnouncments).getDecodable { (response: AFDataResponse<LogginAnns>) in
+    static func getLogginAnnouncements(completion: @escaping (PublicAnns?) -> Void) {
+        sessionManager.request(APIRouter.getLoginAnnouncments).getDecodable { (response: AFDataResponse<PublicAnns>) in
             switch response.result {
             case .success(let value):
                 completion(value)

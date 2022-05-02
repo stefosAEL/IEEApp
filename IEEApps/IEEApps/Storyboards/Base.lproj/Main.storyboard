@@ -102,6 +102,10 @@
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="K9e-ty-2x3">
+                                                    <rect key="frame" x="0.0" y="35.5" width="414" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Mfo-YU-S2a" secondAttribute="bottom" constant="15" id="0G2-DW-ekE"/>
@@ -122,6 +126,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="K9e-ty-2x3" id="AtG-yL-7tc"/>
                                             <outlet property="bodyLabel" destination="DlN-rT-LXF" id="TRy-gM-gZ7"/>
                                             <outlet property="dateTimeLabel" destination="vhi-Pe-NtR" id="alR-km-1Y3"/>
                                             <outlet property="event2Label" destination="H6K-jy-Eei" id="KPJ-BT-dxc"/>
@@ -171,6 +176,9 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="goBack:" destination="Wba-fc-xnd" eventType="touchUpInside" id="mnA-cy-v7C"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ρυθμίσεις" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0V5-eY-yLv">
                                 <rect key="frame" x="118.5" y="59" width="95.5" height="24"/>
@@ -522,12 +530,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="settingsIcon" destination="ftL-hx-Wj0" id="K00-sq-ENE"/>
                         <outlet property="tableView" destination="Fdb-oO-z5k" id="raa-cH-91A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJx-A6-mse" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1188" y="834"/>
+            <point key="canvasLocation" x="-1188.4057971014495" y="833.70535714285711"/>
         </scene>
     </scenes>
     <resources>

@@ -13,6 +13,7 @@ class DataContext {
     var publicAnnouncements: [PublicAnn] = []
     var logginAnnouncements: [PublicAnn] = []
     
+    var page: Int = 1
     var code: String?
     var accessToken: String = ""
     var refreshToken: String?

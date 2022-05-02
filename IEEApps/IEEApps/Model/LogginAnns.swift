@@ -7,6 +7,10 @@
 
 import Foundation
 struct LogginAnns: Codable {
-  let data: [PublicAnn]
-  
-}
+    let data: [PublicAnn]
+    let meta : Meta?
+  }
+
+  struct Meta:Codable{
+      let last_page:Int
+  }
