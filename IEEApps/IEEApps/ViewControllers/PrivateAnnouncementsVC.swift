@@ -40,14 +40,14 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // note that indexPath.section is used rather than indexPath.row
-        print("You tapped cell number \(indexPath.section).")
+        showAnnouncementDesktopVC(row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier , for: indexPath as IndexPath) as! LogginAnnTableViewCell
         let announcement = loggInAnns?[indexPath.row]
         cell.teacherLabel.text = announcement?.author.name
-        cell.bodyLabel.text = announcement?.body
+        cell.bodyLabel.text = announcement?.body.description.html2String
         cell.dateTimeLabel.text = announcement?.created_at
         cell.eventLabel.text = announcement?.tags[0].title
         cell.titleLabel.text = announcement?.title
@@ -72,6 +72,7 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
             tableView.reloadInputViews()
         }
     }
+    
 
     func displayData(){
         DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] publicAnns in
@@ -88,5 +89,20 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
                     })}
         })
         }
+    private func showAnnouncementDesktopVC(row index:Int){
+        let selecteAnn : PublicAnn = (loggInAnns?[index])!
+        let title = selecteAnn.title
+        let body = selecteAnn.body
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AnnouncementsDesktop", bundle:nil)
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PrivateAnnDesktop") as? PrivateAnnDesktop
+        viewcontroller!.body = body
+        viewcontroller!.titleL = title
+        viewcontroller?.modalPresentationStyle = .fullScreen
+        present(viewcontroller!, animated: true)
+
+      
+    }
+    
+    
     }
 

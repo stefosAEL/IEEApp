@@ -46,7 +46,7 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
         // method to run when table view cell is tapped
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             // note that indexPath.section is used rather than indexPath.row
-            print("You tapped cell number \(indexPath.section).")
+            showAnnouncementDesktopVC(row: indexPath.row)
         }
     
 
@@ -54,9 +54,10 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
         // create a new cell if needed or reuse an old one
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier , for: indexPath as IndexPath) as! PublicAnnTableViewCell
         let announcement = publicAnn?[indexPath.row]
+
         //cell.teacherLabel = announcement?.author.name
         cell.teacherLabel.text=announcement?.author.name
-        cell.bodyLabel.text = announcement?.body
+        cell.bodyLabel.text = announcement?.body.description.html2String
         cell.dateTimeLabel.text = announcement?.created_at
         cell.eventLabel.text = announcement?.tags[0].title
         cell.titleLabel.text = announcement?.title
@@ -98,7 +99,40 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
                     })}
         })
         }
-    }
-        
-                                              
+    private func showAnnouncementDesktopVC(row index:Int){
+        let selecteAnn : PublicAnn = (publicAnn?[index])!
+        let title = selecteAnn.title
+        print(title)
+        let body = selecteAnn.body
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AnnouncementsDesktop", bundle:nil)
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PublicAnnDesktop") as? PublicAnnDesktop
+        viewcontroller!.body = body
+        viewcontroller!.titleL = title
+        viewcontroller?.modalPresentationStyle = .fullScreen
+        navigationController?.present(viewcontroller!, animated: true)
 
+      
+    }
+    }
+
+                                              
+extension Data {
+    var html2AttributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: self, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            print("error:", error)
+            return  nil
+        }
+    }
+    var html2String: String { html2AttributedString?.string ?? "" }
+}
+
+extension StringProtocol {
+    var html2AttributedString: NSAttributedString? {
+        Data(utf8).html2AttributedString
+    }
+    var html2String: String {
+        html2AttributedString?.string ?? ""
+    }
+}

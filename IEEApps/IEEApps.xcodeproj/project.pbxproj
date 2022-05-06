@@ -20,6 +20,9 @@
 		B130F61D27F0B8D5003D1B98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B130F61B27F0B8D4003D1B98 /* Main.storyboard */; };
 		B130F61F27F0B8D6003D1B98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B130F61E27F0B8D6003D1B98 /* Assets.xcassets */; };
 		B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F62C27F0BB96003D1B98 /* MainViewController.swift */; };
+		B134A6482821ADC4000CC21A /* PrivateAnnDesktopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */; };
+		B15352E4282047300074A49C /* AnnouncementsDesktop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B15352E3282047300074A49C /* AnnouncementsDesktop.storyboard */; };
+		B15352E628204A490074A49C /* PublicAnnDesktopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */; };
 		B15EA83428087719009C7F33 /* LogginWebViewVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B15EA83328087719009C7F33 /* LogginWebViewVC.storyboard */; };
 		B16347CA28182C0F00AEE41E /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16347C928182C0F00AEE41E /* AuthModel.swift */; };
 		B17710A6280AD145001EDDD1 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17710A5280AD145001EDDD1 /* OAuthClient.swift */; };
@@ -56,6 +59,9 @@
 		B130F61E27F0B8D6003D1B98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B130F62327F0B8D6003D1B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B130F62C27F0BB96003D1B98 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAnnDesktopVC.swift; sourceTree = "<group>"; };
+		B15352E3282047300074A49C /* AnnouncementsDesktop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnouncementsDesktop.storyboard; sourceTree = "<group>"; };
+		B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicAnnDesktopVC.swift; sourceTree = "<group>"; };
 		B15EA83328087719009C7F33 /* LogginWebViewVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogginWebViewVC.storyboard; sourceTree = "<group>"; };
 		B16347C928182C0F00AEE41E /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		B17710A5280AD145001EDDD1 /* OAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
@@ -111,6 +117,8 @@
 				B130F62C27F0BB96003D1B98 /* MainViewController.swift */,
 				B1E0040528083FE70066C50E /* LoggInWebViewVC.swift */,
 				B1086615281D794A008B68F6 /* PrivateAnnouncementsVC.swift */,
+				B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */,
+				B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -158,8 +166,10 @@
 		B130F62927F0BA6B003D1B98 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				B1FFD1F027F89D3E000B4A69 /* PublicAnnModel.swift */,
 				B130F61B27F0B8D4003D1B98 /* Main.storyboard */,
 				B15EA83328087719009C7F33 /* LogginWebViewVC.storyboard */,
+				B15352E3282047300074A49C /* AnnouncementsDesktop.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -167,7 +177,6 @@
 		B130F62B27F0BA9F003D1B98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B1FFD1F027F89D3E000B4A69 /* PublicAnnModel.swift */,
 				B1FFD1F227F8A1C7000B4A69 /* PublicAnnsModel.swift */,
 				B16347C928182C0F00AEE41E /* AuthModel.swift */,
 			);
@@ -289,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B15352E4282047300074A49C /* AnnouncementsDesktop.storyboard in Resources */,
 				B130F61F27F0B8D6003D1B98 /* Assets.xcassets in Resources */,
 				B15EA83428087719009C7F33 /* LogginWebViewVC.storyboard in Resources */,
 				B130F61D27F0B8D5003D1B98 /* Main.storyboard in Resources */,
@@ -351,6 +361,7 @@
 				B1FFD1F327F8A1C7000B4A69 /* PublicAnnsModel.swift in Sources */,
 				B17710A8280AD179001EDDD1 /* TokenRepository.swift in Sources */,
 				B17710AF280AD3C6001EDDD1 /* DeepLinkHandler.swift in Sources */,
+				B134A6482821ADC4000CC21A /* PrivateAnnDesktopVC.swift in Sources */,
 				B17710B1280AD3F6001EDDD1 /* InMemoryTokenRepository.swift in Sources */,
 				B17710BE280AD5A9001EDDD1 /* AppDependeciesContainer.swift in Sources */,
 				B17710A6280AD145001EDDD1 /* OAuthClient.swift in Sources */,
@@ -364,6 +375,7 @@
 				B10AAA5D27FC5AEC004EEE34 /* DataContext.swift in Sources */,
 				B1FFD1F127F89D3E000B4A69 /* PublicAnnModel.swift in Sources */,
 				B1FC320127F75FE9001DFCCE /* SettingsViewController.swift in Sources */,
+				B15352E628204A490074A49C /* PublicAnnDesktopVC.swift in Sources */,
 				B11736412804A60E0036D584 /* PublicAnnTableViewCell.swift in Sources */,
 				B17710AC280AD2BB001EDDD1 /* HttpClient.swift in Sources */,
 				B16347CA28182C0F00AEE41E /* AuthModel.swift in Sources */,

@@ -9,7 +9,6 @@ import UIKit
 
 class PublicAnnTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var event2Label: UILabel!
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var eventLabel: UILabel!
@@ -20,7 +19,6 @@ class PublicAnnTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.activityIndicator.hidesWhenStopped = true
             }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

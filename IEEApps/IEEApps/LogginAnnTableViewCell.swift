@@ -9,8 +9,8 @@ import UIKit
 
 class LogginAnnTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var event2Label: UILabel!
