@@ -19,13 +19,32 @@ extension DataContext {
         })
     }
     
-    func getLoggInAnnouncemnets(completion: @escaping (PublicAnns?)-> Void) {
-        ClientRequests.getLogginAnnouncements(completion: { logginAnns in
+    func getLoggInAnnouncemnets(page:Int,completion: @escaping (PublicAnns?)-> Void) {
+        ClientRequests.getLogginAnnouncements(page:page, completion: { logginAnns in
             guard let logginAnns = logginAnns else {
                 completion(nil)
                 return
             }
             completion(logginAnns)
+        })
+    }
+    
+    func getNotifications(page:Int,completion: @escaping (Notifications?)-> Void) {
+        ClientRequests.getNotifications(page:page, completion: { notifications in
+            guard let notifications = notifications else {
+                completion(nil)
+                return
+            }
+            completion(notifications)
+        })
+    }
+    func Logout(completion: @escaping (Logout?)-> Void) {
+        ClientRequests.Logout( completion: { logout in
+            guard let logout = logout else {
+                completion(nil)
+                return
+            }
+            completion(logout)
         })
     }
 }

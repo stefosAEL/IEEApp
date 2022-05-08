@@ -13,6 +13,7 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     let reuseIdentifier = "LoggInAnnsCell"
     
+    @IBOutlet weak var notificationIcon: UIImageView!
     @IBOutlet weak var settingsIcon: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,11 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         settingsIcon.isUserInteractionEnabled = true
         settingsIcon.addGestureRecognizer(tapGestureRecognizer)
+        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(imageTapped2(tapGestureRecognizer:)))
+        notificationIcon.isUserInteractionEnabled = true
+        notificationIcon.addGestureRecognizer(tapGestureRecognizer2)
         
-        DataContext.instance.getLoggInAnnouncemnets(completion: { [weak self] loggInAnns in
+        DataContext.instance.getLoggInAnnouncemnets(page:DataContext.instance.page2,completion: { [weak self] loggInAnns in
             if let loggInAnns = loggInAnns {
                 self?.loggInAnns = loggInAnns.data
             }
@@ -47,7 +51,7 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier , for: indexPath as IndexPath) as! LogginAnnTableViewCell
         let announcement = loggInAnns?[indexPath.row]
         cell.teacherLabel.text = announcement?.author.name
-        cell.bodyLabel.text = announcement?.body.description.html2String
+        cell.bodyLabel.text = announcement?.body.description.htmlToString
         cell.dateTimeLabel.text = announcement?.created_at
         cell.eventLabel.text = announcement?.tags[0].title
         cell.titleLabel.text = announcement?.title
@@ -58,10 +62,20 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         cell.clipsToBounds = true
         return cell
     }
+    
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "SettingsView")
+        viewcontroller.modalPresentationStyle = .fullScreen
+        present(viewcontroller, animated: true, completion: nil)
+        // Your action
+    }
+    
+    @objc func imageTapped2(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "NotificationsView")
         viewcontroller.modalPresentationStyle = .fullScreen
         present(viewcontroller, animated: true, completion: nil)
         // Your action

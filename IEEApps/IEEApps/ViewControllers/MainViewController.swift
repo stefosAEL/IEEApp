@@ -57,7 +57,7 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
 
         //cell.teacherLabel = announcement?.author.name
         cell.teacherLabel.text=announcement?.author.name
-        cell.bodyLabel.text = announcement?.body.description.html2String
+        cell.bodyLabel.text = announcement?.body.description.htmlToString
         cell.dateTimeLabel.text = announcement?.created_at
         cell.eventLabel.text = announcement?.tags[0].title
         cell.titleLabel.text = announcement?.title
@@ -115,24 +115,16 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
     }
     }
 
-                                              
-extension Data {
-    var html2AttributedString: NSAttributedString? {
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return nil }
         do {
-            return try NSAttributedString(data: self, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
         } catch {
-            print("error:", error)
-            return  nil
+            return nil
         }
     }
-    var html2String: String { html2AttributedString?.string ?? "" }
-}
-
-extension StringProtocol {
-    var html2AttributedString: NSAttributedString? {
-        Data(utf8).html2AttributedString
-    }
-    var html2String: String {
-        html2AttributedString?.string ?? ""
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
     }
 }

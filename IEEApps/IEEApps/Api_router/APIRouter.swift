@@ -11,14 +11,20 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
 
     case getPublicAnnouncments(page:Int)
-    case getLoginAnnouncments
+    case getLoginAnnouncments(page:Int)
+    case getNotifications(page:Int)
+    case LogOut
     
     var baseURL: String? {
         switch self {
             case .getPublicAnnouncments:
                 return "https://aboard.iee.ihu.gr//api"
             case .getLoginAnnouncments:
-            return "https://aboard.iee.ihu.gr//api"
+                return "https://aboard.iee.ihu.gr//api"
+            case .getNotifications:
+                return "https://aboard.iee.ihu.gr//api/auth/user"
+            case .LogOut:
+                return "https://aboard.iee.ihu.gr/api/auth"
         }
     }
     
@@ -27,6 +33,10 @@ enum APIRouter: URLRequestConvertible {
             case .getPublicAnnouncments:
                 return .get
             case .getLoginAnnouncments:
+                return .get
+            case .getNotifications:
+                return .get
+            case .LogOut:
                 return .get
         }
     }
@@ -37,6 +47,10 @@ enum APIRouter: URLRequestConvertible {
                 return "/announcements"
             case .getLoginAnnouncments:
                 return "/announcements"
+            case .getNotifications:
+                return "/notifications"
+            case .LogOut:
+                return "/logout"
         }
     }
     
@@ -48,7 +62,10 @@ enum APIRouter: URLRequestConvertible {
                     return JSONEncoding.default
                 case .getLoginAnnouncments:
                     return JSONEncoding.default
-                
+                case .getNotifications:
+                    return JSONEncoding.default
+                case .LogOut:
+                    return JSONEncoding.default
             }
         default:
             return URLEncoding.queryString
@@ -61,13 +78,20 @@ enum APIRouter: URLRequestConvertible {
             "Content-Type": "application/json"
         ]
 
-        switch self {
+    switch self {
         case .getPublicAnnouncments:
             break
         case .getLoginAnnouncments:
             print(token)
-            headers=["token" :"\(String(describing: token))"]
-            }
+            headers=["Authorization" :"Bearer \(String(describing: token))"]
+        case .getNotifications:
+            print(token)
+            headers=["Authorization" :"Bearer \(String(describing: token))"]
+        case .LogOut:
+            print(token)
+            headers=["Authorization" :"Bearer \(String(describing: token))"]
+        }
+        
     
         
         return headers 
@@ -87,8 +111,13 @@ enum APIRouter: URLRequestConvertible {
         case.getPublicAnnouncments:
             parameters = [:]
             parameters = ["page" : DataContext.instance.page]
-
         case .getLoginAnnouncments:
+            parameters = [:]
+            parameters = ["page" : DataContext.instance.page2]
+        case .getNotifications:
+            parameters = [:]
+            parameters = ["page" : DataContext.instance.page3]
+        case .LogOut:
             parameters = [:]
         }
         return try encoding.encode(request, with: parameters)

@@ -16,7 +16,7 @@ class PublicAnnDesktop : UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        bodyTextView.text = body.description.html2String
+        bodyTextView.text = body.description.htmlToString
         titleLabel.text = titleL
         bodyTextView.layer.borderWidth = 1.0
     }
