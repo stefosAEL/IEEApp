@@ -13,7 +13,6 @@ enum APIRouter: URLRequestConvertible {
     case getPublicAnnouncments(page:Int)
     case getLoginAnnouncments(page:Int)
     case getNotifications(page:Int)
-    case LogOut
     
     var baseURL: String? {
         switch self {
@@ -23,8 +22,7 @@ enum APIRouter: URLRequestConvertible {
                 return "https://aboard.iee.ihu.gr//api"
             case .getNotifications:
                 return "https://aboard.iee.ihu.gr//api/auth/user"
-            case .LogOut:
-                return "https://aboard.iee.ihu.gr/api/auth"
+           
         }
     }
     
@@ -36,8 +34,7 @@ enum APIRouter: URLRequestConvertible {
                 return .get
             case .getNotifications:
                 return .get
-            case .LogOut:
-                return .get
+            
         }
     }
     
@@ -49,8 +46,7 @@ enum APIRouter: URLRequestConvertible {
                 return "/announcements"
             case .getNotifications:
                 return "/notifications"
-            case .LogOut:
-                return "/logout"
+            
         }
     }
     
@@ -63,8 +59,6 @@ enum APIRouter: URLRequestConvertible {
                 case .getLoginAnnouncments:
                     return JSONEncoding.default
                 case .getNotifications:
-                    return JSONEncoding.default
-                case .LogOut:
                     return JSONEncoding.default
             }
         default:
@@ -87,9 +81,7 @@ enum APIRouter: URLRequestConvertible {
         case .getNotifications:
             print(token)
             headers=["Authorization" :"Bearer \(String(describing: token))"]
-        case .LogOut:
-            print(token)
-            headers=["Authorization" :"Bearer \(String(describing: token))"]
+        
         }
         
     
@@ -117,8 +109,6 @@ enum APIRouter: URLRequestConvertible {
         case .getNotifications:
             parameters = [:]
             parameters = ["page" : DataContext.instance.page3]
-        case .LogOut:
-            parameters = [:]
         }
         return try encoding.encode(request, with: parameters)
     }

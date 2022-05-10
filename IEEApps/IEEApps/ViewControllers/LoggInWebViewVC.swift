@@ -13,6 +13,9 @@ import WebKit
 
 class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINavigationBarDelegate {
     var webView: WKWebView!
+    let button = UIButton(frame: CGRect(x: 70, y: 04, width: 44, height: 44))
+    
+
     var authModel:AuthModel?
     let navBar: UINavigationBar = {
         let bar = UINavigationBar()
@@ -24,7 +27,10 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
     override func viewDidLoad() {
         super.viewDidLoad()
         let webConfiguration = WKWebViewConfiguration()
+        button.setTitle("Back", for: .normal)
+        button.addTarget(self, action: #selector(ratingButtonTapped), for: .touchUpInside)
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        self.webView.addSubview(button)
         setupView()
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -118,6 +124,11 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
 
         return url.queryItems?.first(where: { $0.name == param })?.value
 
+    }
+
+    
+    @objc func ratingButtonTapped(){
+        self.dismiss(animated: true, completion: nil)
     }
 
 

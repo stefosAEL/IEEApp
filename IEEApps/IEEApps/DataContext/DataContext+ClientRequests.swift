@@ -38,13 +38,5 @@ extension DataContext {
             completion(notifications)
         })
     }
-    func Logout(completion: @escaping (Logout?)-> Void) {
-        ClientRequests.Logout( completion: { logout in
-            guard let logout = logout else {
-                completion(nil)
-                return
-            }
-            completion(logout)
-        })
-    }
+
 }

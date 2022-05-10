@@ -9,7 +9,6 @@ import UIKit
 
 class AppDependencyContainer {
     let deepLinkHandler = DeepLinkHandler()
-    let tokenRepository = InMemoryTokenRepository()
     
     func makeMainViewController() -> UIViewController {
         let redirectUri = URL(string: "https://github.com/stefosAEL/IEEApp")!
@@ -22,13 +21,8 @@ class AppDependencyContainer {
                                       clientSecret: "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq")
                                       
         let oAuthClient = RemoteOAuthClient(config: oAuthConfig, httpClient: HTTPClient())
-        let oAuthService = OAuthService(oauthClient: oAuthClient, tokenRepository: tokenRepository)
-        let deepLinkCallback: (DeepLink) -> Void = { deepLink in
-            if case .oAuth(let url) = deepLink {
-                oAuthService.exchangeCodeForToken(url: url)
-            }
-        }
-        deepLinkHandler.addCallback(deepLinkCallback, forDeepLink: DeepLink(url: redirectUri)!)
+        let oAuthService = OAuthService(oauthClient: oAuthClient)
+        
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let loginVC = storyBoard.instantiateViewController(withIdentifier: "MainStoryboardID") as! MainViewController
         loginVC.oAuthService = oAuthService

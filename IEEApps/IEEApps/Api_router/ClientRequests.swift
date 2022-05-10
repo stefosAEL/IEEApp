@@ -45,15 +45,5 @@ class ClientRequests {
             }
         }
     }
-    static func Logout(completion: @escaping (Logout?) -> Void) {
-        sessionManager.request(APIRouter.LogOut).getDecodable { (response: AFDataResponse<Logout>) in
-            switch response.result {
-            case .success(let value):
-                completion(value)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
     
 }

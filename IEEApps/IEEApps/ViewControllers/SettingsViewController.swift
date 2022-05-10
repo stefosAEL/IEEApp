@@ -26,8 +26,11 @@ class SettingsViewController : UIViewController
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "MainStoryboardID")
         viewcontroller.modalPresentationStyle = .fullScreen
-        present(viewcontroller, animated: true, completion: nil)
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        self.viewDidLoad()
+        self.present(viewcontroller, animated: true, completion: nil)
     }
+    
     func LogOut (){
         let semaphore = DispatchSemaphore (value: 0)
 
@@ -50,5 +53,19 @@ class SettingsViewController : UIViewController
         task.resume()
         semaphore.wait()
     }
+    
+}
+extension UIViewController {
+  private func resetWindow(with vc: UIViewController?) {
+    guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
+      fatalError("could not get scene delegate ")
+    }
+    sceneDelegate.window?.rootViewController = vc
+  }
+  
+  func showViewController(with id: String) {
+    let vc = storyboard?.instantiateViewController(identifier: id)
+    resetWindow(with: vc)
+  }
 }
 
