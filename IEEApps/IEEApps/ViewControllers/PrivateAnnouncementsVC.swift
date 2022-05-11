@@ -15,16 +15,23 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
     
     @IBOutlet weak var notificationIcon: UIImageView!
     @IBOutlet weak var settingsIcon: UIImageView!
+    @IBOutlet weak var profileIcon: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SettingsImageTapped(tapGestureRecognizer:)))
         settingsIcon.isUserInteractionEnabled = true
         settingsIcon.addGestureRecognizer(tapGestureRecognizer)
-        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(imageTapped2(tapGestureRecognizer:)))
+        
+        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(NotificationsImageTapped(tapGestureRecognizer:)))
         notificationIcon.isUserInteractionEnabled = true
         notificationIcon.addGestureRecognizer(tapGestureRecognizer2)
+        
+        let tapGestureRecognizer3 = UITapGestureRecognizer(target: self, action: #selector(ProfileImageTapped(tapGestureRecognizer:)))
+        profileIcon.isUserInteractionEnabled = true
+        profileIcon.addGestureRecognizer(tapGestureRecognizer3)
         
         DataContext.instance.getLoggInAnnouncemnets(page:DataContext.instance.page2,completion: { [weak self] loggInAnns in
             if let loggInAnns = loggInAnns {
@@ -63,23 +70,30 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         return cell
     }
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    @objc func SettingsImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "SettingsView")
         viewcontroller.modalPresentationStyle = .fullScreen
         present(viewcontroller, animated: true, completion: nil)
-        // Your action
     }
     
-    @objc func imageTapped2(tapGestureRecognizer: UITapGestureRecognizer)
+    @objc func NotificationsImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "NotificationsView")
         viewcontroller.modalPresentationStyle = .fullScreen
         present(viewcontroller, animated: true, completion: nil)
-        // Your action
     }
+    
+    @objc func ProfileImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "ProfileView")
+        viewcontroller.modalPresentationStyle = .fullScreen
+        present(viewcontroller, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == ((loggInAnns?.count ?? 0) - 1)  {
             displayData()

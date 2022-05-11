@@ -45,5 +45,15 @@ class ClientRequests {
             }
         }
     }
+    static func getUsers(completion: @escaping (Users?) -> Void) {
+        sessionManager.request(APIRouter.getUser).getDecodable { (response: AFDataResponse<Users>) in
+            switch response.result {
+            case .success(let value):
+                completion(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
 }

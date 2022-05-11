@@ -38,9 +38,12 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier , for: indexPath as IndexPath) as! NotificationTableViewCell
         let notification = Notifications?[indexPath.row]
-        cell.bodyLabel.text = notification?.data?.type
+        if (notification?.data?.type == "user.login"){
+        cell.bodyLabel.text = "Συνδέθηκε"
+        }else if (notification?.data?.type == "announcement.created"){
+            cell.bodyLabel.text = "O \(String(describing: notification?.data?.user)) δημιούργησε καινούργια ανακοίνωση"
+        }
         cell.DateTimeLabel.text = notification?.created_at
-        
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true

@@ -38,5 +38,14 @@ extension DataContext {
             completion(notifications)
         })
     }
+    func getUsers(completion: @escaping (Users?)-> Void) {
+        ClientRequests.getUsers(completion: { users in
+            guard let users = users else {
+                completion(nil)
+                return
+            }
+            completion(users)
+        })
+    }
 
 }

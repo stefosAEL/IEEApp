@@ -12,5 +12,6 @@ struct Notification: Codable {
 }
 
 struct Datas:Codable{
-    let type:String
+    let type: String
+    let user: String
 }

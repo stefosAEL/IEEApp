@@ -13,6 +13,7 @@ enum APIRouter: URLRequestConvertible {
     case getPublicAnnouncments(page:Int)
     case getLoginAnnouncments(page:Int)
     case getNotifications(page:Int)
+    case getUser
     
     var baseURL: String? {
         switch self {
@@ -22,6 +23,8 @@ enum APIRouter: URLRequestConvertible {
                 return "https://aboard.iee.ihu.gr//api"
             case .getNotifications:
                 return "https://aboard.iee.ihu.gr//api/auth/user"
+            case .getUser:
+                return "https://aboard.iee.ihu.gr//api/auth"
            
         }
     }
@@ -33,6 +36,8 @@ enum APIRouter: URLRequestConvertible {
             case .getLoginAnnouncments:
                 return .get
             case .getNotifications:
+                return .get
+            case .getUser:
                 return .get
             
         }
@@ -46,6 +51,8 @@ enum APIRouter: URLRequestConvertible {
                 return "/announcements"
             case .getNotifications:
                 return "/notifications"
+            case .getUser:
+                return "/user"
             
         }
     }
@@ -59,6 +66,8 @@ enum APIRouter: URLRequestConvertible {
                 case .getLoginAnnouncments:
                     return JSONEncoding.default
                 case .getNotifications:
+                    return JSONEncoding.default
+                case .getUser:
                     return JSONEncoding.default
             }
         default:
@@ -79,6 +88,9 @@ enum APIRouter: URLRequestConvertible {
             print(token)
             headers=["Authorization" :"Bearer \(String(describing: token))"]
         case .getNotifications:
+            print(token)
+            headers=["Authorization" :"Bearer \(String(describing: token))"]
+        case .getUser:
             print(token)
             headers=["Authorization" :"Bearer \(String(describing: token))"]
         
@@ -109,6 +121,8 @@ enum APIRouter: URLRequestConvertible {
         case .getNotifications:
             parameters = [:]
             parameters = ["page" : DataContext.instance.page3]
+        case .getUser:
+            parameters = [:]
         }
         return try encoding.encode(request, with: parameters)
     }
