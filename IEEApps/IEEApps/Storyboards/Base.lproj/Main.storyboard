@@ -349,7 +349,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bugReportLabel" destination="aO9-nQ-Qw0" id="6qA-Lo-fab"/>
                         <outlet property="logoutLabel" destination="DTR-OG-cDM" id="dgu-tS-jD2"/>
+                        <outlet property="privacyPolicyLabel" destination="vbg-Ld-biJ" id="8eO-rk-1NH"/>
+                        <outlet property="sourceCodeLabel" destination="Rxc-q6-Mdq" id="I0O-e9-UJ1"/>
+                        <outlet property="termsAndConditionsLabel" destination="PWU-NI-CpG" id="jhf-Z2-ixv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fa1-t5-lQs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

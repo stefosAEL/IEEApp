@@ -7,21 +7,42 @@
 
 import Foundation
 import UIKit
-class SettingsViewController : UIViewController
+import SafariServices
+import MessageUI
+
+class SettingsViewController : UIViewController, SFSafariViewControllerDelegate, MFMailComposeViewControllerDelegate
 {
+    @IBOutlet weak var privacyPolicyLabel: UILabel!
+    @IBOutlet weak var termsAndConditionsLabel: UILabel!
+    @IBOutlet weak var sourceCodeLabel: UILabel!
     @IBOutlet weak var logoutLabel: UILabel!
+    @IBOutlet weak var bugReportLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.tapFunction))
+        let logoutTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.logoutTapFunction))
             logoutLabel.isUserInteractionEnabled = true
-            logoutLabel.addGestureRecognizer(tap)
+            logoutLabel.addGestureRecognizer(logoutTap)
+        let sourceCodeTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.sourceCodeTapFunction))
+        sourceCodeLabel.isUserInteractionEnabled = true
+        sourceCodeLabel.addGestureRecognizer(sourceCodeTap)
+        let termsAndConditionsTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.termsAndConditionsTapFunctionTapFunction))
+        termsAndConditionsLabel.isUserInteractionEnabled = true
+        termsAndConditionsLabel.addGestureRecognizer(termsAndConditionsTap)
+        let privacyPolicyTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.termsAndConditionsTapFunctionTapFunction))
+        privacyPolicyLabel.isUserInteractionEnabled = true
+        privacyPolicyLabel.addGestureRecognizer(privacyPolicyTap)
+        let bugReportTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.bugReportTapFunctionTapFunction))
+        bugReportLabel.isUserInteractionEnabled = true
+        bugReportLabel.addGestureRecognizer(bugReportTap)
     }
     
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
 
     }
-    @objc func tapFunction(sender:UITapGestureRecognizer) {
+    
+    @objc func logoutTapFunction(sender:UITapGestureRecognizer) {
         LogOut()
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "MainStoryboardID")
@@ -29,6 +50,28 @@ class SettingsViewController : UIViewController
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         self.viewDidLoad()
         self.present(viewcontroller, animated: true, completion: nil)
+    }
+    
+    @objc func sourceCodeTapFunction(sender:UITapGestureRecognizer) {
+        let safariVC = SFSafariViewController(url: URL(string: "https://github.com/stefosAEL/IEEApp/tree/main")!)
+            present(safariVC, animated: true, completion: nil)
+            safariVC.delegate = self
+    }
+    
+    @objc func termsAndConditionsTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+        let safariVC = SFSafariViewController(url: URL(string: "https://github.com/stefosAEL/IEEApp/blob/main/Terms-and-Conditions")!)
+            present(safariVC, animated: true, completion: nil)
+            safariVC.delegate = self
+    }
+    
+    @objc func privacyPolicyTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+        let safariVC = SFSafariViewController(url: URL(string: "https://github.com/stefosAEL/IEEApp/blob/main/Privacy")!)
+            present(safariVC, animated: true, completion: nil)
+            safariVC.delegate = self
+    }
+    
+    @objc func bugReportTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+        showMailComposer()
     }
     
     func LogOut (){
@@ -54,18 +97,37 @@ class SettingsViewController : UIViewController
         semaphore.wait()
     }
     
-}
-extension UIViewController {
-  private func resetWindow(with vc: UIViewController?) {
-    guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
-      fatalError("could not get scene delegate ")
+    func showMailComposer(){
+        if MFMailComposeViewController.canSendMail()  {
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate=self
+        composer.setToRecipients(["stefanosael97@hotmail.com"])
+        composer.setSubject("Bug Report!")
+        composer.setMessageBody("Report your bug here ..", isHTML: false)
+        
+        present(composer,animated: true)
+        }else {
+            return
+        }
     }
-    sceneDelegate.window?.rootViewController = vc
-  }
-  
-  func showViewController(with id: String) {
-    let vc = storyboard?.instantiateViewController(identifier: id)
-    resetWindow(with: vc)
-  }
 }
+extension SettingsViewController{
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if let _ = error {
+            controller.dismiss(animated: true)
+        }
+        switch result {
+        case .cancelled:
+            print("Cancelled")
+        case .saved:
+            print("Fail to Send")
+        case .sent:
+            print("Saved")
+        case .failed:
+            print("Email Sent")
+        }
+        controller.dismiss(animated: true)
+    }
+}
+
 
