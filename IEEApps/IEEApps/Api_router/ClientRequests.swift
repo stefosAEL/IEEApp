@@ -35,8 +35,8 @@ class ClientRequests {
             }
         }
     }
-    static func getNotifications(page:Int, completion: @escaping (Notifications?) -> Void) {
-        sessionManager.request(APIRouter.getNotifications(page:page)).getDecodable { (response: AFDataResponse<Notifications>) in
+    static func getNotifications(page:Int,pageSize:Int, completion: @escaping (Notifications?) -> Void) {
+        sessionManager.request(APIRouter.getNotifications(page:page,pageSize: pageSize)).getDecodable { (response: AFDataResponse<Notifications>) in
             switch response.result {
             case .success(let value):
                 completion(value)

@@ -14,8 +14,8 @@ class DataContext {
     var logginAnnouncements: [PublicAnn] = []
     
     var page: Int = 1
-    var page2:Int = 1
-    var page3:Int = 1
+    var page2: Int = 1
+    var page3: Int = 1
     var code: String?
     var message:String?
     var accessToken: String = ""

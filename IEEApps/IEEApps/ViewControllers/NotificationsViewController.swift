@@ -17,7 +17,7 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        DataContext.instance.getNotifications(page:DataContext.instance.page3,completion: { [weak self] Notifications in
+        DataContext.instance.getNotifications(page:DataContext.instance.page3, pageSize:10 ,completion: { [weak self] Notifications in
             if let Notifications = Notifications {
                 self?.Notifications = Notifications.data
             }
@@ -58,10 +58,10 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
     }
     
     func displayData(){
-        DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] Notifications in
-            if (Notifications?.meta?.last_page ??  0) > (DataContext.instance.page){
+        DataContext.instance.getNotifications(page:DataContext.instance.page,pageSize: 10 ,completion: { [weak self] Notifications in
+            if (Notifications?.meta?.total ??  0) > (DataContext.instance.page){
                     DataContext.instance.page = (DataContext.instance.page) + 1
-                    DataContext.instance.getNotifications(page:DataContext.instance.page3 ,completion: { [weak self] Notifications in
+                DataContext.instance.getNotifications(page:DataContext.instance.page3, pageSize: 10 ,completion: { [weak self] Notifications in
                         if let notifications = Notifications {
                             for not in notifications.data{
                                 self?.Notifications?.append(not)

@@ -12,7 +12,7 @@ enum APIRouter: URLRequestConvertible {
 
     case getPublicAnnouncments(page:Int)
     case getLoginAnnouncments(page:Int)
-    case getNotifications(page:Int)
+    case getNotifications(page:Int,pageSize:Int)
     case getUser
     
     var baseURL: String? {
@@ -120,7 +120,8 @@ enum APIRouter: URLRequestConvertible {
             parameters = ["page" : DataContext.instance.page2]
         case .getNotifications:
             parameters = [:]
-            parameters = ["page" : DataContext.instance.page3]
+            parameters = ["page" : DataContext.instance.page3,
+                          "pageSize": 10]
         case .getUser:
             parameters = [:]
         }

@@ -12,5 +12,5 @@ struct Notifications: Codable {
 }
 
 struct Metas:Codable{
-    let last_page:Int
+    let total:Int
 }

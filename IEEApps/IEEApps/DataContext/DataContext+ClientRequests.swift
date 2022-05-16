@@ -29,8 +29,8 @@ extension DataContext {
         })
     }
     
-    func getNotifications(page:Int,completion: @escaping (Notifications?)-> Void) {
-        ClientRequests.getNotifications(page:page, completion: { notifications in
+    func getNotifications(page:Int,pageSize:Int ,completion: @escaping (Notifications?)-> Void) {
+        ClientRequests.getNotifications(page:page, pageSize: pageSize, completion: { notifications in
             guard let notifications = notifications else {
                 completion(nil)
                 return

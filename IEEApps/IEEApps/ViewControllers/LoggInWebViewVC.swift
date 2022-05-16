@@ -53,7 +53,7 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
         
             if let code = code {
                 print(code)
-                 authModel = getToken(code: code)
+                authModel = getToken(code: code)
                 DataContext.instance.code = code
                 DataContext.instance.refreshToken = authModel?.refresh_token
                 DataContext.instance.accessToken = authModel?.access_token ?? "nill"
@@ -61,7 +61,6 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
                 let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PrivateAnnouncementsVC")
                 viewcontroller.modalPresentationStyle = .fullScreen
                 present(viewcontroller, animated: true, completion: nil)
-
             }
             webView.allowsLinkPreview = false
             decisionHandler(.allow)
@@ -92,26 +91,25 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
         var decodedResponse :AuthModel?
         let parameters = "grant_type=authorization_code&client_id=62408ef084b2a60fc0ba856c&client_secret=4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq&code=\(code)"
         let postData =  parameters.data(using: .utf8)
-
         var request = URLRequest(url: URL(string: "https://login.iee.ihu.gr/token")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.addValue("connect.sid=s%3Axd_v-ikpMWEEHhw-QMJDT8B0hbFgl9Yl.9zywdEQreC5wdmSPD%2BA4Gq9Jc3xkris4a%2FrAnsUdnQE", forHTTPHeaderField: "Cookie")
-
         request.httpMethod = "POST"
         request.httpBody = postData
-
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
           guard let data = data else {
             print(String(describing: error))
             semaphore.signal()
             return
           }
+            let cookieStore = HTTPCookieStorage.shared
+            for cookie in cookieStore.cookies ?? [] {
+                cookieStore.deleteCookie(cookie)
+            }
             decodedResponse = try! JSONDecoder().decode(AuthModel.self, from: data)
             print(String(data: data, encoding: .utf8)!)
             semaphore.signal()
         }
         
-
         task.resume()
         semaphore.wait()
         return decodedResponse!
@@ -119,11 +117,8 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
     
 
     func getParameterFrom(url: String, param: String) -> String? {
-
         guard let url = URLComponents(string: url) else { return nil }
-
         return url.queryItems?.first(where: { $0.name == param })?.value
-
     }
 
     

@@ -11,5 +11,9 @@ struct AuthModel: Codable {
     let access_token: String
     let user: String
     let refresh_token: String
+    let error:Error?
     
+    struct Error:Codable{
+        let code:Int?
+    }
 }

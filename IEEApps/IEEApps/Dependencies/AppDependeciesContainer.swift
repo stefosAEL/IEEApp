@@ -17,7 +17,6 @@ class AppDependencyContainer {
                                       redirectUri: redirectUri,
                                       responseType: "code",
                                       scope:["announcements","profile","notifications","refresh_token","edit_notifications"],
-                                      tokenUrl: URL(string: "https://login.iee.ihu.gr/token")!,
                                       clientSecret: "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq")
                                       
         let oAuthClient = RemoteOAuthClient(config: oAuthConfig, httpClient: HTTPClient())
@@ -27,9 +26,10 @@ class AppDependencyContainer {
         let loginVC = storyBoard.instantiateViewController(withIdentifier: "MainStoryboardID") as! MainViewController
         loginVC.oAuthService = oAuthService
         loginVC.makeHomeViewController = makeHomeViewController
-
         let navigationController = UINavigationController(rootViewController: loginVC)
         return navigationController
+        
+        
     }
     
     func makeHomeViewController() -> UITabBarController {

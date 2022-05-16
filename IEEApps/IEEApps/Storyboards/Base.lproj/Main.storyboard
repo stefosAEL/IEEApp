@@ -360,6 +360,44 @@
             </objects>
             <point key="canvasLocation" x="-541" y="834"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="bzn-eQ-GQF">
+            <objects>
+                <viewController id="oPi-IR-9b2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sce-9L-MoW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Παρακολούθηση Πινάκων" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRj-3q-NVX">
+                                <rect key="frame" x="110.5" y="59" width="235" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0c-de-gqZ">
+                                <rect key="frame" x="15" y="59" width="45.5" height="31"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="goBack:" destination="Wba-fc-xnd" eventType="touchUpInside" id="C6T-Gq-OEf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jn1-A2-heg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dRj-3q-NVX" firstAttribute="top" secondItem="jn1-A2-heg" secondAttribute="top" constant="15" id="9oI-Px-zsE"/>
+                            <constraint firstItem="W0c-de-gqZ" firstAttribute="top" secondItem="jn1-A2-heg" secondAttribute="top" constant="15" id="NUm-4t-Qm9"/>
+                            <constraint firstItem="W0c-de-gqZ" firstAttribute="leading" secondItem="jn1-A2-heg" secondAttribute="leading" constant="15" id="Yf3-UI-eqC"/>
+                            <constraint firstItem="dRj-3q-NVX" firstAttribute="leading" secondItem="W0c-de-gqZ" secondAttribute="trailing" constant="50" id="csi-dI-j2g"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Oa-0d-aXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-542" y="1495"/>
+        </scene>
         <!--Notifications View Controller-->
         <scene sceneID="vYV-Sy-EqD">
             <objects>

@@ -13,14 +13,11 @@ struct OAuthConfig {
     let redirectUri: URL
     let responseType:String
     let scope: [String]
-    let tokenUrl: URL
     let clientSecret: String
     
     
 }
-//http://your-redirect-uri?code=CODE
-//http://your-redirect-uri?error=access_denied&error_reason=user_denied&error_description=Permission+Denied
-//https://login.iee.ihu.gr/authorization/?client_id=" + CLIENT_ID + "&redirect_uri=" + RESPONSE_URL + //"&response_type=code&scope=announcements,profile,notifications,refresh_token,edit_mail,edit_password,edit_profile,edit_notifications"
+
 class RemoteOAuthClient: OAuthClient {
     
     struct AuthParms: Encodable {
@@ -31,18 +28,6 @@ class RemoteOAuthClient: OAuthClient {
      
     }
     
-    struct TokenParams: Encodable {
-        let client_id: String
-        let client_secret: String
-        let code: String
-        let grant_type:String
-    }
-    
-    struct TokenResponse: Decodable {
-        let access_token: String
-        
-        
-    }
     
     private let config: OAuthConfig
     private let httpClient: HTTPClient
@@ -63,22 +48,4 @@ class RemoteOAuthClient: OAuthClient {
         return httpRequest.asURLRequest()?.url
     }
     
-    func exchangeCodeForToken(code: String, completion: @escaping (Result<TokenBag, Error>) -> Void) {
-        let params = TokenParams(client_id: config.clientId,
-                                 client_secret: config.clientSecret,
-                                 code: code,
-                                 grant_type: "authorization_code")
-        let httpRequest = HttpRequest(baseUrl: config.tokenUrl,
-                                      method: .post,
-                                      params: params,
-                                      headers: ["Accept": "application/x-www-form-urlencoded"])
-        httpClient.performRequest(request: httpRequest) { (result: Result<TokenResponse, HTTPClient.RequestError>) in
-            switch result {
-            case .success(let response):
-                completion(.success(TokenBag(accessToken: response.access_token)))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
 }
