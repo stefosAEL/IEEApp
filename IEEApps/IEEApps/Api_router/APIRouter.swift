@@ -13,6 +13,7 @@ enum APIRouter: URLRequestConvertible {
     case getPublicAnnouncments(page:Int)
     case getLoginAnnouncments(page:Int)
     case getNotifications(page:Int,pageSize:Int)
+    case getToken(code: String)
     case getUser
     
     var baseURL: String? {
@@ -25,6 +26,8 @@ enum APIRouter: URLRequestConvertible {
                 return "https://aboard.iee.ihu.gr//api/auth/user"
             case .getUser:
                 return "https://aboard.iee.ihu.gr//api/auth"
+            case .getToken:
+                return"https://login.iee.ihu.gr"
            
         }
     }
@@ -37,6 +40,8 @@ enum APIRouter: URLRequestConvertible {
                 return .get
             case .getNotifications:
                 return .get
+            case .getToken:
+                return .post
             case .getUser:
                 return .get
             
@@ -51,6 +56,8 @@ enum APIRouter: URLRequestConvertible {
                 return "/announcements"
             case .getNotifications:
                 return "/notifications"
+            case .getToken:
+                return "/token"
             case .getUser:
                 return "/user"
             
@@ -61,14 +68,13 @@ enum APIRouter: URLRequestConvertible {
         switch method {
         case .post:
             switch self {
-                case .getPublicAnnouncments:
+                case .getPublicAnnouncments,
+                    .getLoginAnnouncments,
+                    .getNotifications,
+                    .getUser:
                     return JSONEncoding.default
-                case .getLoginAnnouncments:
-                    return JSONEncoding.default
-                case .getNotifications:
-                    return JSONEncoding.default
-                case .getUser:
-                    return JSONEncoding.default
+                case .getToken:
+                    return URLEncoding.default
             }
         default:
             return URLEncoding.queryString
@@ -93,12 +99,10 @@ enum APIRouter: URLRequestConvertible {
         case .getUser:
             print(token)
             headers=["Authorization" :"Bearer \(String(describing: token))"]
-        
+        case .getToken:
+            headers=["Content-Type" :"application/x-www-form-urlencoded"]
         }
-        
-    
-        
-        return headers 
+        return headers
     }
     
     public func asURLRequest() throws -> URLRequest {
@@ -124,6 +128,13 @@ enum APIRouter: URLRequestConvertible {
                           "pageSize": 10]
         case .getUser:
             parameters = [:]
+        case .getToken(let code):
+            parameters = [
+                "code": code,
+                "grant_type": "authorization_code",
+                "client_id": "62408ef084b2a60fc0ba856c",
+                "client_secret" : "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq"
+            ]
         }
         return try encoding.encode(request, with: parameters)
     }

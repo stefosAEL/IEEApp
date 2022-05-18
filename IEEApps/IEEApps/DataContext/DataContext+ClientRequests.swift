@@ -47,5 +47,14 @@ extension DataContext {
             completion(users)
         })
     }
+    func getToken(code: String, completion: @escaping (AuthModel?)-> Void) {
+        ClientRequests.getToken(code: code, completion: { authModel in
+            guard let authModel = authModel else {
+                completion(nil)
+                return
+            }
+            completion(authModel)
+        })
+    }
 
 }

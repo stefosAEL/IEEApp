@@ -18,7 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainVC = dependencyContainer.makeMainViewController()
         self.window = window
         window.frame = UIScreen.main.bounds
-        window.rootViewController = mainVC
+        let loggedIn = false
+        if loggedIn {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PrivateAnnouncementsVC") as! PrivateAnnouncementsVC
+            let navigationController = UINavigationController(rootViewController: viewcontroller)
+            window.rootViewController = navigationController
+        } else {
+            window.rootViewController = mainVC
+        }
+        
         window.makeKeyAndVisible()
     }
 

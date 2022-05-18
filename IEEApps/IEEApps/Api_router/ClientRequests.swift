@@ -56,4 +56,15 @@ class ClientRequests {
         }
     }
     
+    static func getToken(code: String, completion: @escaping (AuthModel?) -> Void) {
+        sessionManager.request(APIRouter.getToken(code: code)).getDecodable { (response: AFDataResponse<AuthModel>) in
+            switch response.result {
+            case .success(let value):
+                completion(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }
