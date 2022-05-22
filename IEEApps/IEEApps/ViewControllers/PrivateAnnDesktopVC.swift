@@ -7,16 +7,18 @@
 
 import Foundation
 import UIKit
+import WebKit
 
 class PrivateAnnDesktop : UIViewController {
     var body = ""
     var titleL = ""
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bodyTextView: UITextView!
+
+    @IBOutlet weak var bodyWebView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        bodyTextView.text = body.description.htmlToString
+        bodyWebView.loadHTMLString(body, baseURL: nil)
         titleLabel.text = titleL
         
     }

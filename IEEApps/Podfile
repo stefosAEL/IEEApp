@@ -7,6 +7,5 @@ target 'IEEApps' do
 
   # Pods for IEEApps
   pod “Alamofire”
-  pod "Keychain"
-
+  pod 'KeychainSwift', '~> 19.0'
 end

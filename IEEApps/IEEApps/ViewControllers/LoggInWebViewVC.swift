@@ -6,15 +6,13 @@
 //
 
 import Foundation
-
+import KeychainSwift
 import WebKit
-
-
 
 class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINavigationBarDelegate {
     var webView: WKWebView!
     let button = UIButton(frame: CGRect(x: 70, y: 04, width: 44, height: 44))
-    
+    let keychain = KeychainSwift()
 
     var authModel:AuthModel?
     let navBar: UINavigationBar = {
@@ -57,7 +55,7 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
                     DataContext.instance.code = code
                     DataContext.instance.refreshToken = authModel.refresh_token
                     DataContext.instance.accessToken = authModel.access_token
-                    
+                    self?.keychain.set("true", forKey: DataReloadEnum.FORCE_RELOAD_PRIVATE_ANNOUNCEMENTS.rawValue)
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PrivateAnnouncementsVC")
                     viewcontroller.modalPresentationStyle = .fullScreen

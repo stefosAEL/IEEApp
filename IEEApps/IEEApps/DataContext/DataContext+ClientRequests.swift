@@ -56,5 +56,14 @@ extension DataContext {
             completion(authModel)
         })
     }
+    func getTags(completion: @escaping (Tag?)-> Void) {
+        ClientRequests.getTags(completion: { tags in
+            guard let tags = tags else {
+                completion(nil)
+                return
+            }
+            completion(tags)
+        })
+    }
 
 }

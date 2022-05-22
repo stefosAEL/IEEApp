@@ -15,6 +15,7 @@ enum APIRouter: URLRequestConvertible {
     case getNotifications(page:Int,pageSize:Int)
     case getToken(code: String)
     case getUser
+    case getTags
     
     var baseURL: String? {
         switch self {
@@ -27,7 +28,9 @@ enum APIRouter: URLRequestConvertible {
             case .getUser:
                 return "https://aboard.iee.ihu.gr//api/auth"
             case .getToken:
-                return"https://login.iee.ihu.gr"
+                return "https://login.iee.ihu.gr"
+            case .getTags:
+                return "https://aboard.iee.ihu.gr//api"
            
         }
     }
@@ -43,6 +46,8 @@ enum APIRouter: URLRequestConvertible {
             case .getToken:
                 return .post
             case .getUser:
+                return .get
+            case .getTags:
                 return .get
             
         }
@@ -60,6 +65,8 @@ enum APIRouter: URLRequestConvertible {
                 return "/token"
             case .getUser:
                 return "/user"
+            case .getTags:
+                return "/tags"
             
         }
     }
@@ -71,7 +78,8 @@ enum APIRouter: URLRequestConvertible {
                 case .getPublicAnnouncments,
                     .getLoginAnnouncments,
                     .getNotifications,
-                    .getUser:
+                    .getUser,
+                    .getTags:
                     return JSONEncoding.default
                 case .getToken:
                     return URLEncoding.default
@@ -89,6 +97,8 @@ enum APIRouter: URLRequestConvertible {
 
     switch self {
         case .getPublicAnnouncments:
+            break
+        case .getTags:
             break
         case .getLoginAnnouncments:
             print(token)
@@ -135,6 +145,8 @@ enum APIRouter: URLRequestConvertible {
                 "client_id": "62408ef084b2a60fc0ba856c",
                 "client_secret" : "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq"
             ]
+        case .getTags:
+            parameters = [:]
         }
         return try encoding.encode(request, with: parameters)
     }

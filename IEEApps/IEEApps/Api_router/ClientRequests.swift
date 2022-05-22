@@ -25,6 +25,7 @@ class ClientRequests {
             }
         }
     }
+    
     static func getLogginAnnouncements(page:Int, completion: @escaping (PublicAnns?) -> Void) {
         sessionManager.request(APIRouter.getLoginAnnouncments(page:page)).getDecodable { (response: AFDataResponse<PublicAnns>) in
             switch response.result {
@@ -58,6 +59,16 @@ class ClientRequests {
     
     static func getToken(code: String, completion: @escaping (AuthModel?) -> Void) {
         sessionManager.request(APIRouter.getToken(code: code)).getDecodable { (response: AFDataResponse<AuthModel>) in
+            switch response.result {
+            case .success(let value):
+                completion(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    static func getTags(completion: @escaping (Tag?) -> Void) {
+        sessionManager.request(APIRouter.getTags).getDecodable { (response: AFDataResponse<Tag>) in
             switch response.result {
             case .success(let value):
                 completion(value)

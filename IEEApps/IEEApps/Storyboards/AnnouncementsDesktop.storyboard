@@ -34,20 +34,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycH-SK-D73">
                                 <rect key="frame" x="0.0" y="133.5" width="414" height="728.5"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y81-nN-v8v">
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPl-s6-ahV">
                                         <rect key="frame" x="5" y="5" width="404" height="718.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Y81-nN-v8v" firstAttribute="top" secondItem="ycH-SK-D73" secondAttribute="top" constant="5" id="8Oi-MQ-Egu"/>
-                                    <constraint firstAttribute="bottom" secondItem="Y81-nN-v8v" secondAttribute="bottom" constant="5" id="Yt7-iD-qWZ"/>
-                                    <constraint firstItem="Y81-nN-v8v" firstAttribute="leading" secondItem="ycH-SK-D73" secondAttribute="leading" constant="5" id="bhN-dZ-vqV"/>
-                                    <constraint firstAttribute="trailing" secondItem="Y81-nN-v8v" secondAttribute="trailing" constant="5" id="rqN-Bx-qaY"/>
+                                    <constraint firstAttribute="trailing" secondItem="OPl-s6-ahV" secondAttribute="trailing" constant="5" id="LMo-aa-CXX"/>
+                                    <constraint firstItem="OPl-s6-ahV" firstAttribute="leading" secondItem="ycH-SK-D73" secondAttribute="leading" constant="5" id="Q06-AR-9rC"/>
+                                    <constraint firstAttribute="bottom" secondItem="OPl-s6-ahV" secondAttribute="bottom" constant="5" id="Y4Y-2N-rDB"/>
+                                    <constraint firstItem="OPl-s6-ahV" firstAttribute="top" secondItem="ycH-SK-D73" secondAttribute="top" constant="5" id="d2x-34-EqE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -66,7 +67,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bodyTextView" destination="Y81-nN-v8v" id="qXS-6F-x1Z"/>
+                        <outlet property="bodyWebView" destination="OPl-s6-ahV" id="lV2-ZW-vGA"/>
                         <outlet property="titleLabel" destination="HHL-FA-8aF" id="PJW-76-aaQ"/>
                     </connections>
                 </viewController>
@@ -100,20 +101,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8d-La-cfg">
                                 <rect key="frame" x="0.0" y="133.5" width="414" height="728.5"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-5q-N2f">
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPq-L2-LjX">
                                         <rect key="frame" x="5" y="5" width="404" height="718.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="s1F-5q-N2f" secondAttribute="trailing" constant="5" id="1ix-SS-nDB"/>
-                                    <constraint firstAttribute="bottom" secondItem="s1F-5q-N2f" secondAttribute="bottom" constant="5" id="4ad-Cn-dIt"/>
-                                    <constraint firstItem="s1F-5q-N2f" firstAttribute="leading" secondItem="A8d-La-cfg" secondAttribute="leading" constant="5" id="DnW-gZ-bM9"/>
-                                    <constraint firstItem="s1F-5q-N2f" firstAttribute="top" secondItem="A8d-La-cfg" secondAttribute="top" constant="5" id="QLd-cJ-Esp"/>
+                                    <constraint firstAttribute="trailing" secondItem="cPq-L2-LjX" secondAttribute="trailing" constant="5" id="RCK-eu-e29"/>
+                                    <constraint firstItem="cPq-L2-LjX" firstAttribute="leading" secondItem="A8d-La-cfg" secondAttribute="leading" constant="5" id="UF9-w2-IO5"/>
+                                    <constraint firstAttribute="bottom" secondItem="cPq-L2-LjX" secondAttribute="bottom" constant="5" id="dxW-Ze-bAt"/>
+                                    <constraint firstItem="cPq-L2-LjX" firstAttribute="top" secondItem="A8d-La-cfg" secondAttribute="top" constant="5" id="o82-cp-gax"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -132,7 +134,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bodyTextView" destination="s1F-5q-N2f" id="bug-5C-9zg"/>
+                        <outlet property="bodyWebView" destination="cPq-L2-LjX" id="4hq-Og-VsI"/>
                         <outlet property="titleLabel" destination="pVE-hL-za0" id="XJm-fL-7X9"/>
                     </connections>
                 </viewController>

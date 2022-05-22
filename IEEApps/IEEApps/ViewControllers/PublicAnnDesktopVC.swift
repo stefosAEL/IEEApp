@@ -7,18 +7,20 @@
 
 import Foundation
 import UIKit
+import WebKit
 
 class PublicAnnDesktop : UIViewController {
     var body = ""
     var titleL = ""
     
-    @IBOutlet weak var bodyTextView: UITextView!
+    @IBOutlet weak var bodyWebView: WKWebView!
     @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        bodyTextView.text = body.description.htmlToString
+        
+        bodyWebView.loadHTMLString(body, baseURL: nil)
         titleLabel.text = titleL
-        bodyTextView.layer.borderWidth = 1.0
+        bodyWebView.layer.borderWidth = 1.0
     }
     
     @IBAction func goBack(_ sender: Any) {

@@ -9,32 +9,45 @@ import Foundation
 import UIKit
 import SafariServices
 import MessageUI
+import KeychainSwift
+
 
 class SettingsViewController : UIViewController, SFSafariViewControllerDelegate, MFMailComposeViewControllerDelegate
 {
+    @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var privacyPolicyLabel: UILabel!
     @IBOutlet weak var termsAndConditionsLabel: UILabel!
     @IBOutlet weak var sourceCodeLabel: UILabel!
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var bugReportLabel: UILabel!
+    let keychain = KeychainSwift()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let logoutTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.logoutTapFunction))
             logoutLabel.isUserInteractionEnabled = true
             logoutLabel.addGestureRecognizer(logoutTap)
+        
         let sourceCodeTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.sourceCodeTapFunction))
         sourceCodeLabel.isUserInteractionEnabled = true
         sourceCodeLabel.addGestureRecognizer(sourceCodeTap)
+        
         let termsAndConditionsTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.termsAndConditionsTapFunctionTapFunction))
         termsAndConditionsLabel.isUserInteractionEnabled = true
         termsAndConditionsLabel.addGestureRecognizer(termsAndConditionsTap)
+        
         let privacyPolicyTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.termsAndConditionsTapFunctionTapFunction))
         privacyPolicyLabel.isUserInteractionEnabled = true
         privacyPolicyLabel.addGestureRecognizer(privacyPolicyTap)
+        
         let bugReportTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.bugReportTapFunctionTapFunction))
         bugReportLabel.isUserInteractionEnabled = true
         bugReportLabel.addGestureRecognizer(bugReportTap)
+        
+        let tagsTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.tagsTapFunctionTapFunction))
+        tagsLabel.isUserInteractionEnabled = true
+        tagsLabel.addGestureRecognizer(tagsTap)
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -44,6 +57,7 @@ class SettingsViewController : UIViewController, SFSafariViewControllerDelegate,
     
     @objc func logoutTapFunction(sender:UITapGestureRecognizer) {
         LogOut()
+        self.keychain.set("false", forKey: DataReloadEnum.FORCE_RELOAD_PRIVATE_ANNOUNCEMENTS.rawValue)
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "MainStoryboardID")
         viewcontroller.modalPresentationStyle = .fullScreen
@@ -72,6 +86,13 @@ class SettingsViewController : UIViewController, SFSafariViewControllerDelegate,
     
     @objc func bugReportTapFunctionTapFunction(sender:UITapGestureRecognizer) {
         showMailComposer()
+    }
+    
+    @objc func tagsTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "TagsViewController")
+        viewcontroller.modalPresentationStyle = .fullScreen
+        self.present(viewcontroller, animated: true, completion: nil)
     }
     
     func LogOut (){

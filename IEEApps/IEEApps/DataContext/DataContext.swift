@@ -6,9 +6,11 @@
 //
 
 import Foundation
-
+import KeychainSwift
 class DataContext {
     static let instance = DataContext()
+    let keychain = KeychainSwift()
+
     
     var publicAnnouncements: [PublicAnn] = []
     var logginAnnouncements: [PublicAnn] = []

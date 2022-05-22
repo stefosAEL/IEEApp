@@ -32,7 +32,7 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         let tapGestureRecognizer3 = UITapGestureRecognizer(target: self, action: #selector(ProfileImageTapped(tapGestureRecognizer:)))
         profileIcon.isUserInteractionEnabled = true
         profileIcon.addGestureRecognizer(tapGestureRecognizer3)
-        
+        navigationController?.setNavigationBarHidden(true, animated: true)
         DataContext.instance.getLoggInAnnouncemnets(page:DataContext.instance.page2,completion: { [weak self] loggInAnns in
             if let loggInAnns = loggInAnns {
                 self?.loggInAnns = loggInAnns.data
@@ -100,7 +100,6 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
             tableView.reloadInputViews()
         }
     }
-    
 
     func displayData(){
         DataContext.instance.getAnnouncemnets(page:DataContext.instance.page ,completion: { [weak self] publicAnns in
@@ -117,6 +116,7 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
                     })}
         })
         }
+    
     private func showAnnouncementDesktopVC(row index:Int){
         let selecteAnn : PublicAnn = (loggInAnns?[index])!
         let title = selecteAnn.title
