@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+var rowsWhichAreChecked = [NSIndexPath]()
 class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
     var tags : [TagsArray]?
     let reuseIdentifier = "TagsCell"
@@ -18,6 +19,7 @@ class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsMultipleSelection=true
         DataContext.instance.getTags(completion: { [weak self] tags in
             if let tags = tags {
                 self?.tags = tags.data
@@ -34,20 +36,55 @@ class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataS
            return 0
         }
     }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier , for: indexPath as IndexPath) as! TagsTableViewCell
-//        let tags = tags?[indexPath.row]
         let sortedTags = tags?.sorted(by: { $0.id < $1.id })
         let tags = sortedTags?[indexPath.row]
         cell.titleLabel.text=tags?.title
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true
+        let isRowChecked = rowsWhichAreChecked.contains(indexPath as NSIndexPath)
         
-        return cell
+        if(isRowChecked == true)
+        {
+            cell.checkBoxBtn.isChecked = true
+            cell.checkBoxBtn.buttonClicked(sender: cell.checkBoxBtn)
+        }else{
+            cell.checkBoxBtn.isChecked = false
+            cell.checkBoxBtn.buttonClicked(sender: cell.checkBoxBtn)
+        }
+    
+    return cell
     }
-   
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TagsTableViewCell
+        cell.checkBoxBtn.isChecked = false
+        cell.checkBoxBtn.buttonClicked(sender: cell.checkBoxBtn)
+        // remove the indexPath from rowsWhichAreCheckedArray
+        if let checkedItemIndex = rowsWhichAreChecked.firstIndex(of: indexPath as NSIndexPath){
+            rowsWhichAreChecked.remove(at: checkedItemIndex)
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TagsTableViewCell
+        cell.contentView.backgroundColor = UIColor.white
+        // cross checking for checked rows
+        if(rowsWhichAreChecked.contains(indexPath as NSIndexPath) == false){
+            cell.checkBoxBtn.isChecked = true
+            cell.checkBoxBtn.buttonClicked(sender: cell.checkBoxBtn)
+            
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 60.00
+    }
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

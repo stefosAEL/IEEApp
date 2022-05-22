@@ -24,6 +24,7 @@
 		B131F443282BC10F00432B39 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B131F442282BC10F00432B39 /* UsersModel.swift */; };
 		B134A6482821ADC4000CC21A /* PrivateAnnDesktopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */; };
 		B14DB5872836A217002DFBFF /* DataContext + KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14DB5862836A217002DFBFF /* DataContext + KeyChain.swift */; };
+		B14E3DCB283A4FF5000E29EE /* CheckBoxBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14E3DCA283A4FF5000E29EE /* CheckBoxBtn.swift */; };
 		B15352E4282047300074A49C /* AnnouncementsDesktop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B15352E3282047300074A49C /* AnnouncementsDesktop.storyboard */; };
 		B15352E628204A490074A49C /* PublicAnnDesktopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */; };
 		B15E6058282ACAF900D0BE42 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15E6057282ACAF900D0BE42 /* ProfileViewController.swift */; };
@@ -74,6 +75,7 @@
 		B131F442282BC10F00432B39 /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
 		B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAnnDesktopVC.swift; sourceTree = "<group>"; };
 		B14DB5862836A217002DFBFF /* DataContext + KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataContext + KeyChain.swift"; sourceTree = "<group>"; };
+		B14E3DCA283A4FF5000E29EE /* CheckBoxBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxBtn.swift; sourceTree = "<group>"; };
 		B15352E3282047300074A49C /* AnnouncementsDesktop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnouncementsDesktop.storyboard; sourceTree = "<group>"; };
 		B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicAnnDesktopVC.swift; sourceTree = "<group>"; };
 		B15E6057282ACAF900D0BE42 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				B1086613281D78CB008B68F6 /* LogginAnnTableViewCell.swift */,
 				B1BB33ED2826C3B9001F6C60 /* NotificationTableViewCell.swift */,
 				B1B5EFD828393AB500ADCD6D /* TagsTableViewCell.swift */,
+				B14E3DCA283A4FF5000E29EE /* CheckBoxBtn.swift */,
 			);
 			path = IEEApps;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				B1BB33EE2826C3B9001F6C60 /* NotificationTableViewCell.swift in Sources */,
 				B1086616281D794A008B68F6 /* PrivateAnnouncementsVC.swift in Sources */,
 				B17710BB280AD53E001EDDD1 /* Encodable.swift in Sources */,
+				B14E3DCB283A4FF5000E29EE /* CheckBoxBtn.swift in Sources */,
 				B17710B8280AD4C9001EDDD1 /* ClientRequests.swift in Sources */,
 				B1E0040628083FE70066C50E /* LoggInWebViewVC.swift in Sources */,
 				B1FFD1F327F8A1C7000B4A69 /* PublicAnnsModel.swift in Sources */,
