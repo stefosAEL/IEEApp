@@ -11,6 +11,7 @@ import UIKit
 var rowsWhichAreChecked = [NSIndexPath]()
 class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataSource{
     var tags : [TagsArray]?
+    var subs : [Subscription]?
     let reuseIdentifier = "TagsCell"
 
     @IBOutlet weak var tableView: UITableView!
@@ -23,6 +24,12 @@ class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataS
         DataContext.instance.getTags(completion: { [weak self] tags in
             if let tags = tags {
                 self?.tags = tags.data
+            }
+            self?.tableView.reloadData()
+        })
+        DataContext.instance.getSubscriptions(completion:{ [weak self] subs in
+            if let subs = subs {
+                self?.subs = subs
             }
             self?.tableView.reloadData()
         })
@@ -49,7 +56,14 @@ class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataS
         cell.clipsToBounds = true
         let isRowChecked = rowsWhichAreChecked.contains(indexPath as NSIndexPath)
         
-        if(isRowChecked == true)
+        if let subs = self.subs {
+            for sub in subs {
+                cell.checkBoxBtn.isChecked = tags?.id == sub.id ? true : false
+            }
+           
+        }
+        
+        if(isRowChecked == true )
         {
             cell.checkBoxBtn.isChecked = true
             cell.checkBoxBtn.buttonClicked(sender: cell.checkBoxBtn)

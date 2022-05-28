@@ -8,5 +8,6 @@
 import Foundation
 struct TagsArray: Codable {
     let title : String
-    let id : Int
+    var id : Int
+    let isSelected : Bool?
 }

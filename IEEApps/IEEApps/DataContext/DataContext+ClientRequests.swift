@@ -29,8 +29,8 @@ extension DataContext {
         })
     }
     
-    func getNotifications(page:Int,pageSize:Int ,completion: @escaping (Notifications?)-> Void) {
-        ClientRequests.getNotifications(page:page, pageSize: pageSize, completion: { notifications in
+    func getNotifications(page:Int ,completion: @escaping (Notifications?)-> Void) {
+        ClientRequests.getNotifications(page:page, completion: { notifications in
             guard let notifications = notifications else {
                 completion(nil)
                 return
@@ -56,6 +56,22 @@ extension DataContext {
             completion(authModel)
         })
     }
+    
+    func refreshToken(completion: @escaping (Bool) -> Void) {
+        guard let refreshToken = refreshToken else {
+            completion(false)
+            return
+        }
+        ClientRequests.refreshToken(refreshToken: refreshToken) {[weak self] (authModel) in
+            guard let authModel = authModel else {
+                completion(false)
+                return
+            }
+            self?.refreshToken = authModel.refresh_token
+            completion(true)
+        }
+    }
+    
     func getTags(completion: @escaping (Tag?)-> Void) {
         ClientRequests.getTags(completion: { tags in
             guard let tags = tags else {
@@ -63,6 +79,16 @@ extension DataContext {
                 return
             }
             completion(tags)
+        })
+    }
+    
+    func getSubscriptions(completion: @escaping ([Subscription]?)-> Void) {
+        ClientRequests.getSubscriptions(completion: { subs in
+            guard let subs = subs else {
+                completion(nil)
+                return
+            }
+            completion(subs)
         })
     }
 

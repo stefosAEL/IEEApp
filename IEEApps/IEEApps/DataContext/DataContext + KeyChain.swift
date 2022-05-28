@@ -12,6 +12,9 @@ extension DataContext {
     
     enum KeychainKey: String {
         case FORCE_RELOAD_PRIVATE_ANNOUNCEMENTS = "FORCE_RELOAD_PRIVATE_ANNOUNCEMENTS"
+        case REMEMBER_TOKEN = "remember_token"
+        case REMEMBER_REFRESH_TOKEN = "remember_refresh_token"
+
 
         var key: String {
             return self.rawValue
@@ -27,6 +30,28 @@ extension DataContext {
         }
         set{
             keychain.set(newValue, forKey: KeychainKey.FORCE_RELOAD_PRIVATE_ANNOUNCEMENTS.key)
+        }
+    }
+    var rememberToken: String {
+        get {
+            guard let rememberToken = keychain.get(KeychainKey.REMEMBER_TOKEN.key) else {
+                return ""
+            }
+            return rememberToken
+        }
+        set{
+            keychain.set(newValue, forKey: KeychainKey.REMEMBER_TOKEN.key)
+        }
+    }
+    var rememberRefreshToken: String {
+        get {
+            guard let rememberRefreshToken = keychain.get(KeychainKey.REMEMBER_REFRESH_TOKEN.key) else {
+                return ""
+            }
+            return rememberRefreshToken
+        }
+        set{
+            keychain.set(newValue, forKey: KeychainKey.REMEMBER_REFRESH_TOKEN.key)
         }
     }
 }

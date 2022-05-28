@@ -482,19 +482,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYz-XE-8UT">
-                                                    <rect key="frame" x="25" y="13" width="369" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="26P-TJ-P4r"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYz-XE-8UT">
+                                                    <rect key="frame" x="25" y="13" width="369" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVd-0h-hYt">
-                                                    <rect key="frame" x="25" y="38" width="71" height="25"/>
+                                                    <rect key="frame" x="25" y="56" width="64" height="10"/>
                                                     <color key="tintColor" systemColor="tintColor"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="10" id="hGB-Hu-Ncd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -504,7 +504,7 @@
                                                 <constraint firstItem="dYz-XE-8UT" firstAttribute="top" secondItem="SJ0-y8-bC9" secondAttribute="topMargin" constant="2" id="2xG-Ll-xSy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dYz-XE-8UT" secondAttribute="trailing" id="A57-st-mNo"/>
                                                 <constraint firstItem="fVd-0h-hYt" firstAttribute="leading" secondItem="SJ0-y8-bC9" secondAttribute="leadingMargin" constant="5" id="Jc5-vZ-CQg"/>
-                                                <constraint firstItem="fVd-0h-hYt" firstAttribute="bottom" secondItem="SJ0-y8-bC9" secondAttribute="bottomMargin" constant="5" id="day-6k-eWK"/>
+                                                <constraint firstItem="fVd-0h-hYt" firstAttribute="bottom" secondItem="SJ0-y8-bC9" secondAttribute="bottomMargin" constant="8" id="day-6k-eWK"/>
                                                 <constraint firstItem="fVd-0h-hYt" firstAttribute="top" secondItem="dYz-XE-8UT" secondAttribute="bottom" constant="5" id="nwm-vD-oYW"/>
                                             </constraints>
                                         </tableViewCellContentView>

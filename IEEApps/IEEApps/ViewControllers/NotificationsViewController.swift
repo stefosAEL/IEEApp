@@ -17,7 +17,7 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        DataContext.instance.getNotifications(page:DataContext.instance.page3, pageSize:10 ,completion: { [weak self] Notifications in
+        DataContext.instance.getNotifications(page:DataContext.instance.page3,completion: { [weak self] Notifications in
             if let Notifications = Notifications {
                 self?.Notifications = Notifications.data
             }
@@ -41,7 +41,9 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
         if (notification?.data?.type == "user.login"){
         cell.bodyLabel.text = "Συνδέθηκε"
         }else if (notification?.data?.type == "announcement.created"){
-            cell.bodyLabel.text = "O \(String(describing: notification?.data?.user)) δημιούργησε καινούργια ανακοίνωση"
+            if let user = notification?.data?.user {
+            cell.bodyLabel.text = "O χρήστης \(user) δημιούργησε καινούργια ανακοίνωση"
+            }
         }
         cell.DateTimeLabel.text = notification?.created_at
         cell.layer.borderWidth = 1
@@ -58,10 +60,11 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
     }
     
     func displayData(){
-        DataContext.instance.getNotifications(page:DataContext.instance.page,pageSize: 10 ,completion: { [weak self] Notifications in
-            if (Notifications?.meta?.total ??  0) > (DataContext.instance.page){
+        DataContext.instance.getNotifications(page:DataContext.instance.page3,completion: { [weak self] Notifications in
+            if let total = Notifications?.meta?.last_page{
+            if total > (DataContext.instance.page3){
                     DataContext.instance.page = (DataContext.instance.page) + 1
-                DataContext.instance.getNotifications(page:DataContext.instance.page3, pageSize: 10 ,completion: { [weak self] Notifications in
+                DataContext.instance.getNotifications(page:DataContext.instance.page3,completion: { [weak self] Notifications in
                         if let notifications = Notifications {
                             for not in notifications.data{
                                 self?.Notifications?.append(not)
@@ -69,8 +72,9 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
                         }
                         self?.tableView.reloadData()
                 
-                    })}
-        })
+                })}
+            }})
+            
         }
     
     @IBAction func goBck(_ sender: Any) {

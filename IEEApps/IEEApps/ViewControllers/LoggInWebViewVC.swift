@@ -9,6 +9,7 @@ import Foundation
 import KeychainSwift
 import WebKit
 
+
 class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINavigationBarDelegate {
     var webView: WKWebView!
     let button = UIButton(frame: CGRect(x: 70, y: 04, width: 44, height: 44))
@@ -50,11 +51,19 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
             let code = self.getParameterFrom(url: url.absoluteString, param: "code")
         
             if let code = code {
+                print(code)
                 DataContext.instance.getToken(code: code, completion: { [weak self] authModel in
                     guard let authModel = authModel else { self?.dismiss(animated: true); return }
                     DataContext.instance.code = code
                     DataContext.instance.refreshToken = authModel.refresh_token
                     DataContext.instance.accessToken = authModel.access_token
+                    if DataContext.instance.accessToken != "" {
+                        self?.keychain.set("\(DataContext.instance.accessToken)", forKey: Configuration.REMEMBER_TOKEN)
+                    }
+                    if authModel.refresh_token != ""{
+                        self?.keychain.set("\(authModel.refresh_token)", forKey: Configuration.REMEMBER_REFRESH_TOKEN)
+
+                    }
                     self?.keychain.set("true", forKey: DataReloadEnum.FORCE_RELOAD_PRIVATE_ANNOUNCEMENTS.rawValue)
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PrivateAnnouncementsVC")

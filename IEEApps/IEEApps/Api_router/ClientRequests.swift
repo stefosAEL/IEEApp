@@ -36,8 +36,8 @@ class ClientRequests {
             }
         }
     }
-    static func getNotifications(page:Int,pageSize:Int, completion: @escaping (Notifications?) -> Void) {
-        sessionManager.request(APIRouter.getNotifications(page:page,pageSize: pageSize)).getDecodable { (response: AFDataResponse<Notifications>) in
+    static func getNotifications(page:Int, completion: @escaping (Notifications?) -> Void) {
+        sessionManager.request(APIRouter.getNotifications(page:page)).getDecodable { (response: AFDataResponse<Notifications>) in
             switch response.result {
             case .success(let value):
                 completion(value)
@@ -67,8 +67,31 @@ class ClientRequests {
             }
         }
     }
+    
+    static func refreshToken(refreshToken: String, completion: @escaping (AuthModel?) -> Void) {
+        sessionManager.request(APIRouter.getToken(code: refreshToken)).getDecodable { (response: AFDataResponse<AuthModel>) in
+            switch response.result {
+            case .success(let value):
+                completion(value)
+            case .failure:
+                completion(nil)
+            }
+        }
+    }
+    
     static func getTags(completion: @escaping (Tag?) -> Void) {
         sessionManager.request(APIRouter.getTags).getDecodable { (response: AFDataResponse<Tag>) in
+            switch response.result {
+            case .success(let value):
+                completion(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    static func getSubscriptions(completion: @escaping ([Subscription]?) -> Void) {
+        sessionManager.request(APIRouter.getTags).getDecodable { (response: AFDataResponse<[Subscription]>) in
             switch response.result {
             case .success(let value):
                 completion(value)

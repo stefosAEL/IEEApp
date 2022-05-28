@@ -58,12 +58,11 @@ class SettingsViewController : UIViewController, SFSafariViewControllerDelegate,
     @objc func logoutTapFunction(sender:UITapGestureRecognizer) {
         LogOut()
         self.keychain.set("false", forKey: DataReloadEnum.FORCE_RELOAD_PRIVATE_ANNOUNCEMENTS.rawValue)
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "MainStoryboardID")
-        viewcontroller.modalPresentationStyle = .fullScreen
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-        self.viewDidLoad()
-        self.present(viewcontroller, animated: true, completion: nil)
+        let dependencyContainer = AppDependencyContainer()
+        let mainVC = dependencyContainer.makeMainViewController()
+        self.view.window?.frame = UIScreen.main.bounds
+        self.view.window?.rootViewController? = mainVC
+
     }
     
     @objc func sourceCodeTapFunction(sender:UITapGestureRecognizer) {
