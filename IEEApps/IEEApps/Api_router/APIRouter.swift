@@ -14,7 +14,7 @@ enum APIRouter: URLRequestConvertible {
     case getPublicAnnouncments(page:Int)
     case getLoginAnnouncments(page:Int)
     case getNotifications(page:Int)
-    case getToken(code: String)
+    case getToken(code: String,grantType:String)
     case getUser
     case getTags
     case getSubscriptions
@@ -108,8 +108,7 @@ enum APIRouter: URLRequestConvertible {
     
     var headers: [String : String] {
         let keychain = KeychainSwift()
-        DataContext.instance.refreshToken = keychain.get(Configuration.REMEMBER_REFRESH_TOKEN)
-        DataContext.instance.accessToken = keychain.get(Configuration.REMEMBER_TOKEN) ?? ""
+        
         let token = DataContext.instance.accessToken
 
         var headers = [
@@ -164,10 +163,10 @@ enum APIRouter: URLRequestConvertible {
             parameters = ["page" : DataContext.instance.page3]
         case .getUser:
             parameters = [:]
-        case .getToken(let code):
+        case .getToken(let code,let grantType):
             parameters = [
                 "code": code,
-                "grant_type": "authorization_code",
+                "grant_type": "\(grantType)",
                 "client_id": "62408ef084b2a60fc0ba856c",
                 "client_secret" : "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq"
             ]

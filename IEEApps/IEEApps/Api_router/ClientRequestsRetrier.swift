@@ -7,11 +7,12 @@
 
 import Foundation
 import Alamofire
-
+import KeychainSwift
 class ClientRequestsRetrier: Interceptor {
-    
+    let keychain = KeychainSwift()
     override var accessToken: String? {
         return DataContext.instance.accessToken
+
     }
     
     override func refreshTokens(completion: @escaping (Bool) -> ()) {

@@ -47,8 +47,8 @@ extension DataContext {
             completion(users)
         })
     }
-    func getToken(code: String, completion: @escaping (AuthModel?)-> Void) {
-        ClientRequests.getToken(code: code, completion: { authModel in
+    func getToken(code: String,grantType:String, completion: @escaping (AuthModel?)-> Void) {
+        ClientRequests.getToken(code: code,grantType: grantType, completion: { authModel in
             guard let authModel = authModel else {
                 completion(nil)
                 return
@@ -62,7 +62,7 @@ extension DataContext {
             completion(false)
             return
         }
-        ClientRequests.refreshToken(refreshToken: refreshToken) {[weak self] (authModel) in
+        ClientRequests.refreshToken(refreshToken: refreshToken,grantType: refresh_grant_type) {[weak self] (authModel) in
             guard let authModel = authModel else {
                 completion(false)
                 return

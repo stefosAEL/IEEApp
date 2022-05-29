@@ -15,6 +15,8 @@ class DataContext {
     var publicAnnouncements: [PublicAnn] = []
     var logginAnnouncements: [PublicAnn] = []
     
+    var grant_type : String = "authorization_code"
+    var refresh_grant_type : String = "refresh_token"
     var page: Int = 1
     var page2: Int = 1
     var page3: Int = 1

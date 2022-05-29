@@ -26,7 +26,9 @@ class Interceptor: RequestInterceptor {
         if
             let statusCode = (request.task?.response as? HTTPURLResponse)?.statusCode,
             [401, 403].contains(statusCode)
+                
         {
+            print(statusCode)
             requestsToRetry.append(completion)
             if !isRefreshing {
                 print(request.retryCount)

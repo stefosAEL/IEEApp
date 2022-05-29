@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
-
+import KeychainSwift
 class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDataSource{
      var loggInAnns: [PublicAnn]?
     @IBOutlet weak var tableView: UITableView!
     let reuseIdentifier = "LoggInAnnsCell"
-    
+    let keychain = KeychainSwift()
     @IBOutlet weak var notificationIcon: UIImageView!
     @IBOutlet weak var settingsIcon: UIImageView!
     @IBOutlet weak var profileIcon: UIImageView!
@@ -21,6 +21,8 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        DataContext.instance.refreshToken = self.keychain.get(Configuration.REMEMBER_REFRESH_TOKEN)
+        DataContext.instance.accessToken = self.keychain.get(Configuration.REMEMBER_TOKEN) ?? ""
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SettingsImageTapped(tapGestureRecognizer:)))
         settingsIcon.isUserInteractionEnabled = true
         settingsIcon.addGestureRecognizer(tapGestureRecognizer)
