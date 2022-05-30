@@ -10,8 +10,8 @@ import Alamofire
 class ClientRequests {
 
     static let sessionManager: Session = {
-        let retrier = ClientRequestsRetrier()
-        let sessMan = Session(interceptor: retrier)
+        let policy = ClientRequestsRetrier()
+        let sessMan = Session(interceptor: policy)
         return sessMan
     }()
     
@@ -57,8 +57,8 @@ class ClientRequests {
         }
     }
     
-    static func getToken(code: String,grantType:String, completion: @escaping (AuthModel?) -> Void) {
-        sessionManager.request(APIRouter.getToken(code: code,grantType: grantType)).getDecodable { (response: AFDataResponse<AuthModel>) in
+    static func getToken(code: String, completion: @escaping (AuthModel?) -> Void) {
+        sessionManager.request(APIRouter.getToken(code: code)).getDecodable { (response: AFDataResponse<AuthModel>) in
             switch response.result {
             case .success(let value):
                 completion(value)
@@ -68,8 +68,8 @@ class ClientRequests {
         }
     }
     
-    static func refreshToken(refreshToken: String,grantType:String, completion: @escaping (AuthModel?) -> Void) {
-        sessionManager.request(APIRouter.getToken(code: refreshToken,grantType: grantType)).getDecodable { (response: AFDataResponse<AuthModel>) in
+    static func refreshToken(refreshToken: String, completion: @escaping (AuthModel?) -> Void) {
+        sessionManager.request(APIRouter.refreshToken(refreshToken: refreshToken)).getDecodable { (response: AFDataResponse<AuthModel>) in
             switch response.result {
             case .success(let value):
                 completion(value)

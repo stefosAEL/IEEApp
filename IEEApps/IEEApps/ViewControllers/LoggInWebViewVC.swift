@@ -52,7 +52,7 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
         
             if let code = code {
                 print(code)
-                DataContext.instance.getToken(code: code,grantType: DataContext.instance.grant_type, completion: { [weak self] authModel in
+                DataContext.instance.getToken(code: code, completion: { [weak self] authModel in
                     guard let authModel = authModel else { self?.dismiss(animated: true); return }
                     DataContext.instance.code = code
                     if DataContext.instance.accessToken != "" {

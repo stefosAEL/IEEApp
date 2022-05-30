@@ -14,7 +14,8 @@ enum APIRouter: URLRequestConvertible {
     case getPublicAnnouncments(page:Int)
     case getLoginAnnouncments(page:Int)
     case getNotifications(page:Int)
-    case getToken(code: String,grantType:String)
+    case getToken(code: String)
+    case refreshToken(refreshToken: String)
     case getUser
     case getTags
     case getSubscriptions
@@ -30,7 +31,8 @@ enum APIRouter: URLRequestConvertible {
                 return "https://aboard.iee.ihu.gr//api/auth/user"
             case .getUser:
                 return "https://aboard.iee.ihu.gr//api/auth"
-            case .getToken:
+            case .getToken,
+                 .refreshToken:
                 return "https://login.iee.ihu.gr"
             case .getTags:
                 return "https://aboard.iee.ihu.gr//api"
@@ -50,7 +52,8 @@ enum APIRouter: URLRequestConvertible {
                 return .get
             case .getNotifications:
                 return .get
-            case .getToken:
+            case .getToken,
+                 .refreshToken:
                 return .post
             case .getUser:
                 return .get
@@ -72,7 +75,8 @@ enum APIRouter: URLRequestConvertible {
                 return "/announcements"
             case .getNotifications:
                 return "/notifications"
-            case .getToken:
+            case .getToken,
+                .refreshToken:
                 return "/token"
             case .getUser:
                 return "/user"
@@ -98,7 +102,8 @@ enum APIRouter: URLRequestConvertible {
                     .getSubscriptions,
                     .postSubscripe:
                     return JSONEncoding.default
-                case .getToken:
+                case .getToken,
+                     .refreshToken:
                     return URLEncoding.default
             }
         default:
@@ -108,7 +113,8 @@ enum APIRouter: URLRequestConvertible {
     
     var headers: [String : String] {
         let keychain = KeychainSwift()
-        
+        DataContext.instance.refreshToken = keychain.get(Configuration.REMEMBER_REFRESH_TOKEN)
+        DataContext.instance.accessToken = keychain.get(Configuration.REMEMBER_TOKEN) ?? ""
         let token = DataContext.instance.accessToken
 
         var headers = [
@@ -129,7 +135,8 @@ enum APIRouter: URLRequestConvertible {
         case .getUser:
             print(token)
             headers=["Authorization" :"Bearer \(String(describing: token))"]
-        case .getToken:
+        case .getToken,
+            .refreshToken:
             headers=["Content-Type" :"application/x-www-form-urlencoded"]
         case .getSubscriptions:
             print(token)
@@ -163,10 +170,18 @@ enum APIRouter: URLRequestConvertible {
             parameters = ["page" : DataContext.instance.page3]
         case .getUser:
             parameters = [:]
-        case .getToken(let code,let grantType):
+        case .getToken(let code):
             parameters = [
                 "code": code,
-                "grant_type": "\(grantType)",
+                "grant_type": "authorization_code",
+                "client_id": "62408ef084b2a60fc0ba856c",
+                "client_secret" : "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq"
+            ]
+            
+        case .refreshToken(let token):
+            parameters = [
+                "code": token,
+                "grant_type": "refresh_token",
                 "client_id": "62408ef084b2a60fc0ba856c",
                 "client_secret" : "4mtxqivi27efteqcmkgzc7v7ex97o8ak4qjggack3jo07lfzaq"
             ]
@@ -183,5 +198,3 @@ enum APIRouter: URLRequestConvertible {
     
     
 }
-
-
