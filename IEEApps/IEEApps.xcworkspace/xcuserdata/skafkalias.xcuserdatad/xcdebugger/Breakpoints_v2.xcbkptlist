@@ -392,7 +392,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0222659E-AA46-4E14-ACE1-ABF17BE2339A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IEEApps/ViewControllers/PrivateAnnouncementsVC.swift"
