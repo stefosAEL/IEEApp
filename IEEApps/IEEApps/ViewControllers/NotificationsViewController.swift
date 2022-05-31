@@ -63,7 +63,7 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
         DataContext.instance.getNotifications(page:DataContext.instance.page3,completion: { [weak self] Notifications in
             if let total = Notifications?.meta?.last_page{
             if total > (DataContext.instance.page3){
-                    DataContext.instance.page = (DataContext.instance.page) + 1
+                    DataContext.instance.page3 = (DataContext.instance.page3) + 1
                 DataContext.instance.getNotifications(page:DataContext.instance.page3,completion: { [weak self] Notifications in
                         if let notifications = Notifications {
                             for not in notifications.data{
