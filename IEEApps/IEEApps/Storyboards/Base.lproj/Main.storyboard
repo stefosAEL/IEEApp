@@ -483,16 +483,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYz-XE-8UT">
-                                                    <rect key="frame" x="25" y="13" width="369" height="28"/>
+                                                    <rect key="frame" x="25" y="13" width="369" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVd-0h-hYt">
-                                                    <rect key="frame" x="25" y="46" width="64" height="20"/>
+                                                    <rect key="frame" x="25" y="56" width="64" height="10"/>
                                                     <color key="tintColor" systemColor="tintColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="hGB-Hu-Ncd"/>
+                                                        <constraint firstAttribute="height" constant="10" id="hGB-Hu-Ncd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>

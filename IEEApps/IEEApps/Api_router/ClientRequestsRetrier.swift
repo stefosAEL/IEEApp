@@ -17,6 +17,7 @@ class ClientRequestsRetrier: Interceptor {
     override func refreshTokens(completion: @escaping (Bool) -> ()) {
         guard !isRefreshing else { return }
         isRefreshing = true
+        print("Refreshing")
         DataContext.instance.refreshToken { [weak self] (success) in
             self?.isRefreshing = false
             DispatchQueue.main.async {

@@ -7,22 +7,25 @@
 
 import Foundation
 import UIKit
-import KeychainSwift
+
 class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDataSource{
      var loggInAnns: [PublicAnn]?
     @IBOutlet weak var tableView: UITableView!
     let reuseIdentifier = "LoggInAnnsCell"
-    let keychain = KeychainSwift()
+    
     @IBOutlet weak var notificationIcon: UIImageView!
     @IBOutlet weak var settingsIcon: UIImageView!
     @IBOutlet weak var profileIcon: UIImageView!
+    
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        DataContext.instance.refreshToken = self.keychain.get(Configuration.REMEMBER_REFRESH_TOKEN)
-        DataContext.instance.accessToken = self.keychain.get(Configuration.REMEMBER_TOKEN) ?? ""
+        refreshControl.addTarget(self, action: #selector(self.refreshAnnouncements), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SettingsImageTapped(tapGestureRecognizer:)))
         settingsIcon.isUserInteractionEnabled = true
         settingsIcon.addGestureRecognizer(tapGestureRecognizer)
@@ -35,13 +38,19 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         profileIcon.isUserInteractionEnabled = true
         profileIcon.addGestureRecognizer(tapGestureRecognizer3)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        getAnnouncements()
+    
+    }
+    
+    private func getAnnouncements() {
         DataContext.instance.getLoggInAnnouncemnets(page:DataContext.instance.page2,completion: { [weak self] loggInAnns in
             if let loggInAnns = loggInAnns {
                 self?.loggInAnns = loggInAnns.data
             }
+            self?.refreshControl.endRefreshing()
             self?.tableView.reloadData()
         })
-    
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let loggInAnns = loggInAnns
@@ -70,6 +79,10 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true
         return cell
+    }
+    
+    @objc func refreshAnnouncements() {
+        getAnnouncements()
     }
     
     @objc func SettingsImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -134,5 +147,5 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
     }
     
     
-    }
+}
 

@@ -320,7 +320,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
             endingLineNumber = "121"
-            landmarkName = "LogOut()"
+            landmarkName = "showMailComposer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -385,6 +385,22 @@
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0222659E-AA46-4E14-ACE1-ABF17BE2339A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IEEApps/ViewControllers/PrivateAnnouncementsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "getAnnouncements()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
