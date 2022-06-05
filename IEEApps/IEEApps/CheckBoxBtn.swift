@@ -11,12 +11,13 @@ import UIKit
 class CheckBoxBtn :UIButton{
     let checkedImage = UIImage(named: "CheckBoxChecked")! as UIImage
    let uncheckedImage = UIImage(named: "CheckBoxUnChecked")! as UIImage
-    
-    var isChecked: Bool = false {
+
+    var isChecked: Bool = true {
         didSet{
             if isChecked == true {
                 self.setImage(uncheckedImage, for: .normal)
             } else {
+                
                 self.setImage(checkedImage, for: .normal)
             }
         }
@@ -25,7 +26,7 @@ class CheckBoxBtn :UIButton{
     override func awakeFromNib() {
         self.isUserInteractionEnabled = true
         self.addTarget(self, action: #selector(CheckBoxBtn.buttonClicked), for: .touchUpInside)
-                self.isChecked = false
+        self.isChecked = false
     }
     
     @objc func buttonClicked(sender: UIButton) {

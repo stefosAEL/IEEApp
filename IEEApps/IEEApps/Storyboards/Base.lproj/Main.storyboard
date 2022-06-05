@@ -383,6 +383,9 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Αποθήκευση"/>
+                                <connections>
+                                    <action selector="save:" destination="oPi-IR-9b2" eventType="touchUpInside" id="fkk-7I-Woz"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="O2z-rr-igE">
                                 <rect key="frame" x="0.0" y="100" width="414" height="752"/>
@@ -402,12 +405,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS1-uB-ePx" customClass="CheckBoxBtn" customModule="IEEApps" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="11" width="30" height="35"/>
+                                                    <rect key="frame" x="10" y="11" width="30" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="Ltn-Ne-YgZ"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" title="Button" image="CheckBoxUnChecked"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="didTapButtonWithSender:" destination="oec-6R-vyY" eventType="touchUpInside" id="0Sg-ep-FBV"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -441,6 +447,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="saveBtn" destination="np7-xt-ydg" id="shH-oO-xL7"/>
                         <outlet property="tableView" destination="O2z-rr-igE" id="LpB-h8-pFZ"/>
                     </connections>
                 </viewController>
@@ -810,7 +817,6 @@
     </scenes>
     <resources>
         <image name="256" width="64" height="64"/>
-        <image name="CheckBoxUnChecked" width="35" height="35"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="bell.badge.fill" catalog="system" width="128" height="128"/>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>

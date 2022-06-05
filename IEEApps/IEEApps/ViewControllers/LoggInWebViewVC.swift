@@ -107,7 +107,6 @@ class LogginWebViewVC:UIViewController, WKUIDelegate, WKNavigationDelegate, UINa
     }
 
 
-
 }
     
     

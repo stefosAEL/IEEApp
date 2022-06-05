@@ -8,5 +8,13 @@
 import Foundation
 
 struct Subscription: Codable {
-  let id: Int
+    let pivot : Pivot?
+    
+    struct Pivot: Codable {
+        let tagID: Int
+
+        enum CodingKeys: String, CodingKey {
+            case tagID = "tag_id"
+        }
+    }
 }

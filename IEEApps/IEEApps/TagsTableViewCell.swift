@@ -8,7 +8,7 @@
 import UIKit
 
 class TagsTableViewCell: UITableViewCell {
-
+    var actionBlock: (() -> Void)? = nil
     @IBOutlet weak var checkBoxBtn: CheckBoxBtn!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
@@ -21,5 +21,7 @@ class TagsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func didTapButton(sender: UIButton) {
+            actionBlock?()
+        }
 }
