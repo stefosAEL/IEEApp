@@ -62,7 +62,7 @@ class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataS
         for sub in subs?.subscriptions ?? [] {
             if sub.title == cell.titleLabel.text ?? ""{
                 isRowChecked = true
-                
+
             }
         }
     
@@ -76,12 +76,10 @@ class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataS
             cell.checkBoxBtn.buttonClicked(sender: cell.checkBoxBtn)
         }
         cell.actionBlock = {
+            self.saveBtn.isEnabled = true
             if cell.checkBoxBtn.isChecked == true{
                 if (tags?.id) != nil{
                     self.tagIds?.append(tags!.id)
-                    if(self.tagIds != nil){
-                        self.saveBtn.isEnabled = true
-                    }
                 }} else{
                     if self.tagIds != nil {
                         if let index = self.tagIds?.firstIndex(of: tags!.id) {
@@ -91,9 +89,7 @@ class TagsViewController : UIViewController,UITableViewDelegate,UITableViewDataS
                     }
                     
                 }
-            if (self.tagIds == nil){
-                self.saveBtn.isEnabled = false
-            }
+            
         }
         
     return cell

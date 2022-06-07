@@ -12,6 +12,8 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
     var Notifications:[Notification]?
     @IBOutlet weak var tableView: UITableView!
     let reuseIdentifier = "NotificationCell"
+    var anns: NotAnn?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
             }
             self?.tableView.reloadData()
         })
+        
     
     }
     
@@ -58,6 +61,20 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
             tableView.reloadInputViews()
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let notification = Notifications?[indexPath.row]
+        if let notification = notification?.data{
+            DataContext.instance.getNotificationAnn(id: notification.id,completion: { [weak self] anns in
+                if let anns = anns {
+                    self?.anns = anns
+                }
+                self?.showAnnouncementDesktopVC()
+                
+            }
+
+      )}
+
+    }
     
     func displayData(){
         DataContext.instance.getNotifications(page:DataContext.instance.page3,completion: { [weak self] Notifications in
@@ -79,5 +96,19 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
     
     @IBAction func goBck(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func showAnnouncementDesktopVC(){
+        let selecteAnn : NotAnn = (anns!)
+        let title = selecteAnn.data.title
+        let body = selecteAnn.data.body
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AnnouncementsDesktop", bundle:nil)
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PublicAnnDesktop") as? PublicAnnDesktop
+        viewcontroller!.body = body
+        viewcontroller!.titleL = title
+        viewcontroller?.modalPresentationStyle = .fullScreen
+        present(viewcontroller!, animated: true)
+
+      
     }
 }

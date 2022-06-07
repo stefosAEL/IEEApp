@@ -20,6 +20,7 @@ enum APIRouter: URLRequestConvertible {
     case getTags
     case getSubscriptions
     case postSubscripe(id:[Int])
+    case getNotAnn(id:Int)
     
     var baseURL: String? {
         switch self {
@@ -40,6 +41,8 @@ enum APIRouter: URLRequestConvertible {
                 return "https://aboard.iee.ihu.gr//api/auth"
             case .postSubscripe:
                 return "https://aboard.iee.ihu.gr//api/auth"
+            case .getNotAnn:
+                return "https://aboard.iee.ihu.gr//api"
            
         }
     }
@@ -63,6 +66,8 @@ enum APIRouter: URLRequestConvertible {
                 return .get
             case .postSubscripe:
                 return .post
+            case .getNotAnn:
+                return .get
  
         }
     }
@@ -86,7 +91,8 @@ enum APIRouter: URLRequestConvertible {
                 return "/subscriptions"
             case .postSubscripe:
                 return "/subscripe"
-            
+            case .getNotAnn(let id):
+                return "/announcements/\(id)"
         }
     }
     
@@ -100,7 +106,8 @@ enum APIRouter: URLRequestConvertible {
                     .getUser,
                     .getTags,
                     .getSubscriptions,
-                    .postSubscripe:
+                    .postSubscripe,
+                    .getNotAnn:
                     return JSONEncoding.default
                 case .getToken,
                      .refreshToken:
@@ -142,8 +149,11 @@ enum APIRouter: URLRequestConvertible {
             print(token)
             headers=["Authorization" :"Bearer \(String(describing: token))"]
         case .postSubscripe:
-        print(token)
-        headers=["Authorization" :"Bearer \(String(describing: token))"]
+            print(token)
+            headers=["Authorization" :"Bearer \(String(describing: token))"]
+        case .getNotAnn:
+            print(token)
+            headers=["Authorization" :"Bearer \(String(describing: token))"]
         }
         return headers
     }
@@ -157,7 +167,6 @@ enum APIRouter: URLRequestConvertible {
         request.allHTTPHeaderFields = headers
         print(headers)
         var parameters: Parameters?
-        
         switch self {
         case.getPublicAnnouncments:
             parameters = [:]
@@ -192,6 +201,8 @@ enum APIRouter: URLRequestConvertible {
             parameters = [:]
         case .postSubscripe(let id):
             parameters = ["tags" : id]
+        case .getNotAnn:
+            parameters = [:]
         }
         return try encoding.encode(request, with: parameters)
     }

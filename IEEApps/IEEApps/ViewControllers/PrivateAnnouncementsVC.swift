@@ -44,7 +44,7 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
     }
     
     private func getAnnouncements() {
-        DataContext.instance.getLoggInAnnouncemnets(page:DataContext.instance.page2,completion: { [weak self] loggInAnns in
+        DataContext.instance.getLoggInAnnouncemnets(page:DataContext.instance.page,completion: { [weak self] loggInAnns in
             if let loggInAnns = loggInAnns {
                 self?.loggInAnns = loggInAnns.data
             }
@@ -74,7 +74,6 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         cell.eventLabel.text = announcement?.tags[0].title
         cell.titleLabel.text = announcement?.title
         cell.event2Label.text = announcement?.tags[1].title
-        
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true
@@ -137,7 +136,7 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         let title = selecteAnn.title
         let body = selecteAnn.body
         let storyBoard : UIStoryboard = UIStoryboard(name: "AnnouncementsDesktop", bundle:nil)
-        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PrivateAnnDesktop") as? PrivateAnnDesktop
+        let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PublicAnnDesktop") as? PublicAnnDesktop
         viewcontroller!.body = body
         viewcontroller!.titleL = title
         viewcontroller?.modalPresentationStyle = .fullScreen
@@ -148,4 +147,6 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
     
     
 }
+
+
 

@@ -12,7 +12,7 @@ struct PublicAnn: Codable {
     let body: String
     let created_at: String
     let tags: [Tags]
-    
+    let id: Int
 }
 
 struct Teacher: Codable {

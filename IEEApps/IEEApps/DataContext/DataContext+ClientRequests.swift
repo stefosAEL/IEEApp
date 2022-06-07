@@ -93,5 +93,14 @@ extension DataContext {
             completion(subs)
         })
     }
+    func getNotificationAnn(id:Int,completion: @escaping (NotAnn?)-> Void) {
+        ClientRequests.getNotificationAnnouncement(id:id,completion: { logginAnns in
+            guard let logginAnns = logginAnns else {
+                completion(nil)
+                return
+            }
+            completion(logginAnns)
+        })
+    }
 
 }

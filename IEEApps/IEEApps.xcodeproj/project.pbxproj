@@ -25,9 +25,9 @@
 		B130F62D27F0BB96003D1B98 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130F62C27F0BB96003D1B98 /* MainViewController.swift */; };
 		B131F441282BBFB900432B39 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B131F440282BBFB900432B39 /* UserModel.swift */; };
 		B131F443282BC10F00432B39 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B131F442282BC10F00432B39 /* UsersModel.swift */; };
-		B134A6482821ADC4000CC21A /* PrivateAnnDesktopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */; };
 		B14DB5872836A217002DFBFF /* DataContext + KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14DB5862836A217002DFBFF /* DataContext + KeyChain.swift */; };
 		B14E3DCB283A4FF5000E29EE /* CheckBoxBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14E3DCA283A4FF5000E29EE /* CheckBoxBtn.swift */; };
+		B14F209A284FD592008CD21A /* NotAnn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F2099284FD592008CD21A /* NotAnn.swift */; };
 		B15352E4282047300074A49C /* AnnouncementsDesktop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B15352E3282047300074A49C /* AnnouncementsDesktop.storyboard */; };
 		B15352E628204A490074A49C /* PublicAnnDesktopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */; };
 		B15E6058282ACAF900D0BE42 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15E6057282ACAF900D0BE42 /* ProfileViewController.swift */; };
@@ -80,9 +80,9 @@
 		B130F62C27F0BB96003D1B98 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B131F440282BBFB900432B39 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B131F442282BC10F00432B39 /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
-		B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAnnDesktopVC.swift; sourceTree = "<group>"; };
 		B14DB5862836A217002DFBFF /* DataContext + KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataContext + KeyChain.swift"; sourceTree = "<group>"; };
 		B14E3DCA283A4FF5000E29EE /* CheckBoxBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxBtn.swift; sourceTree = "<group>"; };
+		B14F2099284FD592008CD21A /* NotAnn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAnn.swift; sourceTree = "<group>"; };
 		B15352E3282047300074A49C /* AnnouncementsDesktop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnouncementsDesktop.storyboard; sourceTree = "<group>"; };
 		B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicAnnDesktopVC.swift; sourceTree = "<group>"; };
 		B15E6057282ACAF900D0BE42 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,6 @@
 				B1E0040528083FE70066C50E /* LoggInWebViewVC.swift */,
 				B1086615281D794A008B68F6 /* PrivateAnnouncementsVC.swift */,
 				B15352E528204A490074A49C /* PublicAnnDesktopVC.swift */,
-				B134A6472821ADC4000CC21A /* PrivateAnnDesktopVC.swift */,
 				B1BB33EF2826C6D6001F6C60 /* NotificationsViewController.swift */,
 				B15E6057282ACAF900D0BE42 /* ProfileViewController.swift */,
 				B1B5EFDA28393B9F00ADCD6D /* TagsViewController.swift */,
@@ -227,6 +226,7 @@
 				B1B5EFD4283937AB00ADCD6D /* TagsModel.swift */,
 				B1B5EFD62839384300ADCD6D /* TagModel.swift */,
 				B1C3E9FD2840FF7C00318E2A /* SubscriptionsModel.swift */,
+				B14F2099284FD592008CD21A /* NotAnn.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -412,7 +412,6 @@
 				B1FFD1F327F8A1C7000B4A69 /* PublicAnnsModel.swift in Sources */,
 				B17710AF280AD3C6001EDDD1 /* DeepLinkHandler.swift in Sources */,
 				B10E32D028425F9E00F2C6F0 /* Configuration.swift in Sources */,
-				B134A6482821ADC4000CC21A /* PrivateAnnDesktopVC.swift in Sources */,
 				B15E6058282ACAF900D0BE42 /* ProfileViewController.swift in Sources */,
 				B17710BE280AD5A9001EDDD1 /* AppDependeciesContainer.swift in Sources */,
 				B17710A6280AD145001EDDD1 /* OAuthClient.swift in Sources */,
@@ -421,6 +420,7 @@
 				B130F61627F0B8D4003D1B98 /* AppDelegate.swift in Sources */,
 				B131F443282BC10F00432B39 /* UsersModel.swift in Sources */,
 				B1086614281D78CB008B68F6 /* LogginAnnTableViewCell.swift in Sources */,
+				B14F209A284FD592008CD21A /* NotAnn.swift in Sources */,
 				B130F61827F0B8D4003D1B98 /* SceneDelegate.swift in Sources */,
 				B1B5EFD928393AB500ADCD6D /* TagsTableViewCell.swift in Sources */,
 				B10E32CC28425B7400F2C6F0 /* Interceptor.swift in Sources */,

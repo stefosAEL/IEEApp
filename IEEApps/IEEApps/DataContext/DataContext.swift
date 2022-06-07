@@ -14,7 +14,7 @@ class DataContext {
     
     var publicAnnouncements: [PublicAnn] = []
     var logginAnnouncements: [PublicAnn] = []
-    
+    var annId: Int = 0
     var page: Int = 1
     var page2: Int = 1
     var page3: Int = 1

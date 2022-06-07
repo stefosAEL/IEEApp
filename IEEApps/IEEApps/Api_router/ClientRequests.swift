@@ -100,5 +100,15 @@ class ClientRequests {
             }
         }
     }
+    static func getNotificationAnnouncement(id:Int,completion: @escaping (NotAnn?) -> Void) {
+        sessionManager.request(APIRouter.getNotAnn(id:id)).getDecodable { (response: AFDataResponse<NotAnn?>) in
+            switch response.result {
+            case .success(let value):
+                completion(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
 }
