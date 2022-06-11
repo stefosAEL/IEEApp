@@ -35,6 +35,12 @@ class PublicAnnDesktop : UIViewController {
         bodyWebView.layer.shadowPath = UIBezierPath(rect: bodyWebView.bounds).cgPath
         bodyWebView.layer.shouldRasterize = true
         bodyWebView.layer.rasterizationScale = UIScreen.main.scale
+        
+        titleLabel.layer.shadowColor = UIColor.black.cgColor
+        titleLabel.layer.shadowRadius = 2.0
+        titleLabel.layer.shadowOpacity = 0.6
+        titleLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
+        titleLabel.layer.masksToBounds = false
 
 
     }

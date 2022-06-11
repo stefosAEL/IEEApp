@@ -59,9 +59,9 @@ class MainViewController : UIViewController,UITableViewDelegate, UITableViewData
         cell.teacherLabel.text=announcement?.author.name
         cell.bodyLabel.text = announcement?.body.description.htmlToString
         cell.dateTimeLabel.text = announcement?.created_at
-        cell.eventLabel.text = announcement?.tags[0].title
+        cell.eventLabel.text = announcement?.tags[1].title
         cell.titleLabel.text = announcement?.title
-        cell.event2Label.text=announcement?.tags[1].title
+        cell.event2Label.text=announcement?.tags[0].title
         
         
         cell.layer.borderWidth = 1

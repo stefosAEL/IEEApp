@@ -463,7 +463,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtn-bJ-aAd">
-                                <rect key="frame" x="15" y="59" width="45.5" height="31"/>
+                                <rect key="frame" x="10" y="54" width="45.5" height="31"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system"/>
@@ -472,7 +472,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ειδοποιήσεις" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TR9-ID-EtY">
-                                <rect key="frame" x="108.5" y="59" width="125" height="24"/>
+                                <rect key="frame" x="103.5" y="59" width="125" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -529,10 +529,10 @@
                             <constraint firstItem="TR9-ID-EtY" firstAttribute="top" secondItem="103-CA-gtp" secondAttribute="top" constant="15" id="8bO-Qd-KOc"/>
                             <constraint firstItem="YjM-UX-TuD" firstAttribute="leading" secondItem="103-CA-gtp" secondAttribute="leading" id="EcI-kc-T4g"/>
                             <constraint firstItem="YjM-UX-TuD" firstAttribute="top" secondItem="TR9-ID-EtY" secondAttribute="bottom" constant="10" id="GIQ-hc-w3O"/>
-                            <constraint firstItem="qtn-bJ-aAd" firstAttribute="leading" secondItem="103-CA-gtp" secondAttribute="leading" constant="15" id="Qbo-Qn-JL3"/>
+                            <constraint firstItem="qtn-bJ-aAd" firstAttribute="leading" secondItem="103-CA-gtp" secondAttribute="leading" constant="10" id="Qbo-Qn-JL3"/>
                             <constraint firstItem="103-CA-gtp" firstAttribute="bottom" secondItem="YjM-UX-TuD" secondAttribute="bottom" constant="10" id="fXs-o8-bIO"/>
                             <constraint firstItem="103-CA-gtp" firstAttribute="trailing" secondItem="YjM-UX-TuD" secondAttribute="trailing" id="pfl-MR-B4H"/>
-                            <constraint firstItem="qtn-bJ-aAd" firstAttribute="top" secondItem="103-CA-gtp" secondAttribute="top" constant="15" id="u4d-2T-2sw"/>
+                            <constraint firstItem="qtn-bJ-aAd" firstAttribute="top" secondItem="103-CA-gtp" secondAttribute="top" constant="10" id="u4d-2T-2sw"/>
                         </constraints>
                     </view>
                     <connections>
