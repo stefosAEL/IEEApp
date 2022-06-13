@@ -25,7 +25,7 @@ class NotificationsViewController : UIViewController,UITableViewDelegate,UITable
             }
             self?.tableView.reloadData()
         })
-        
+        DataContext.instance.page3=1
     
     }
     
