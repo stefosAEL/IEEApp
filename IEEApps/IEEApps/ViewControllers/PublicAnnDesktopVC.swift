@@ -29,12 +29,15 @@ class PublicAnnDesktop : UIViewController {
         bodyWebView.loadHTMLString(header + body + "</body>", baseURL: nil)
         titleLabel.text = titleL
         bodyWebView.layer.shadowColor = UIColor.black.cgColor
-        bodyWebView.layer.shadowOpacity = 1
+        bodyWebView.layer.shadowOpacity = 0.5
         bodyWebView.layer.shadowOffset = .zero
-        bodyWebView.layer.shadowRadius = 5
+        bodyWebView.layer.shadowRadius = 3
         bodyWebView.layer.shadowPath = UIBezierPath(rect: bodyWebView.bounds).cgPath
         bodyWebView.layer.shouldRasterize = true
         bodyWebView.layer.rasterizationScale = UIScreen.main.scale
+        bodyWebView.layer.borderColor = UIColor.black.cgColor
+        bodyWebView.layer.borderWidth = 0.2
+        
         
         titleLabel.layer.shadowColor = UIColor.black.cgColor
         titleLabel.layer.shadowRadius = 2.0
