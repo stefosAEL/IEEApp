@@ -33,19 +33,19 @@ class SettingsViewController : UIViewController, SFSafariViewControllerDelegate,
         sourceCodeLabel.isUserInteractionEnabled = true
         sourceCodeLabel.addGestureRecognizer(sourceCodeTap)
         
-        let termsAndConditionsTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.termsAndConditionsTapFunctionTapFunction))
+        let termsAndConditionsTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.termsAndConditionsTapFunction))
         termsAndConditionsLabel.isUserInteractionEnabled = true
         termsAndConditionsLabel.addGestureRecognizer(termsAndConditionsTap)
         
-        let privacyPolicyTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.termsAndConditionsTapFunctionTapFunction))
+        let privacyPolicyTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.privacyPolicyTapFunction(sender:)))
         privacyPolicyLabel.isUserInteractionEnabled = true
         privacyPolicyLabel.addGestureRecognizer(privacyPolicyTap)
         
-        let bugReportTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.bugReportTapFunctionTapFunction))
+        let bugReportTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.bugReportTapFunction))
         bugReportLabel.isUserInteractionEnabled = true
         bugReportLabel.addGestureRecognizer(bugReportTap)
         
-        let tagsTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.tagsTapFunctionTapFunction))
+        let tagsTap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.tagsTapFunction))
         tagsLabel.isUserInteractionEnabled = true
         tagsLabel.addGestureRecognizer(tagsTap)
     }
@@ -71,23 +71,23 @@ class SettingsViewController : UIViewController, SFSafariViewControllerDelegate,
             safariVC.delegate = self
     }
     
-    @objc func termsAndConditionsTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+    @objc func termsAndConditionsTapFunction(sender:UITapGestureRecognizer) {
         let safariVC = SFSafariViewController(url: URL(string: "https://github.com/stefosAEL/IEEApp/blob/main/Terms-and-Conditions")!)
             present(safariVC, animated: true, completion: nil)
             safariVC.delegate = self
     }
     
-    @objc func privacyPolicyTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+    @objc func privacyPolicyTapFunction(sender:UITapGestureRecognizer) {
         let safariVC = SFSafariViewController(url: URL(string: "https://github.com/stefosAEL/IEEApp/blob/main/Privacy")!)
             present(safariVC, animated: true, completion: nil)
             safariVC.delegate = self
     }
     
-    @objc func bugReportTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+    @objc func bugReportTapFunction(sender:UITapGestureRecognizer) {
         showMailComposer()
     }
     
-    @objc func tagsTapFunctionTapFunction(sender:UITapGestureRecognizer) {
+    @objc func tagsTapFunction(sender:UITapGestureRecognizer) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "TagsViewController")
         viewcontroller.modalPresentationStyle = .fullScreen
