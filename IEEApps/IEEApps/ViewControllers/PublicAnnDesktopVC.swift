@@ -12,6 +12,8 @@ import WebKit
 class PublicAnnDesktop : UIViewController {
     var body = ""
     var titleL = ""
+    var atachement = ""
+    var atachement2 = ""
     let header = """
             <head>
                 <style>
@@ -26,7 +28,11 @@ class PublicAnnDesktop : UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        bodyWebView.loadHTMLString(header + body + "</body>", baseURL: nil)
+        if atachement != ""{
+        bodyWebView.loadHTMLString(header + body + "<br>" + "<b>links: </b>" + atachement +  "<br>" + atachement2 + "</body>"  , baseURL: nil)
+        } else {
+        bodyWebView.loadHTMLString(header + body + "</body>"  , baseURL: nil)
+        }
         titleLabel.text = titleL
         bodyWebView.layer.shadowColor = UIColor.black.cgColor
         bodyWebView.layer.shadowOffset = .zero

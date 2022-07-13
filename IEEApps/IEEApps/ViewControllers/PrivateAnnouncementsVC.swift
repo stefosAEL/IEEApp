@@ -135,10 +135,23 @@ class PrivateAnnouncementsVC:UIViewController, UITableViewDelegate,UITableViewDa
         let selecteAnn : PublicAnn = (loggInAnns?[index])!
         let title = selecteAnn.title
         let body = selecteAnn.body
+        var atachement = ""
+        var atachement2 = ""
+        if let attac = selecteAnn.attachments  {
+            if attac.count >= 1  {
+            atachement = attac[0].attachment_url
+            }else if attac.count > 1{
+                atachement = attac[0].attachment_url
+                atachement2 = attac[1].attachment_url
+            }
+        }
+ 
         let storyBoard : UIStoryboard = UIStoryboard(name: "AnnouncementsDesktop", bundle:nil)
         let viewcontroller = storyBoard.instantiateViewController(withIdentifier: "PublicAnnDesktop") as? PublicAnnDesktop
         viewcontroller!.body = body
         viewcontroller!.titleL = title
+        viewcontroller?.atachement = atachement
+        viewcontroller?.atachement2 = atachement2
         viewcontroller?.modalPresentationStyle = .fullScreen
         present(viewcontroller!, animated: true)
 

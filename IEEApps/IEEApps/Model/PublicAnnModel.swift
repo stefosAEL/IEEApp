@@ -13,12 +13,15 @@ struct PublicAnn: Codable {
     let created_at: String
     let tags: [Tags]
     let id: Int
+    let attachments : [Attachments]?
 }
 
 struct Teacher: Codable {
     let name: String
 }
-
+struct Attachments: Codable {
+    let attachment_url: String
+}
 struct Tags:Codable {
     let title: String
 }
